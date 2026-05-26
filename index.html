@@ -31,7 +31,7 @@
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --serif: Georgia, "Times New Roman", serif;
       --hero-image: url("ChatGPT Image 25 may 2026, 21_32_23.png");
-      --chef-image: url("WhatsApp Image 2026-05-11 at 12.49.23.jpeg");
+      --chef-image: url("288679c8-8069-43aa-b2d6-498240da4286.png");
     }
 
     * {
@@ -93,7 +93,7 @@
     }
 
     .section {
-      padding: 88px 0;
+      padding: 64px 0;
       position: relative;
     }
 
@@ -275,48 +275,9 @@
       margin-top: 34px;
     }
 
-    /* Experience */
-    .experience {
-      background: linear-gradient(180deg, var(--bg), #0f0d0c);
-    }
-
-    .experience-layout {
-      display: grid;
-      gap: 28px;
-    }
-
-    .experience-copy {
-      display: grid;
-      gap: 22px;
-      max-width: 760px;
-    }
-
-    .experience-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .point {
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.035);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
-    }
-
-    .point span {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--copper-2);
-      font-family: var(--serif);
-      font-size: 1.55rem;
-    }
-
     /* Chef */
     .chef {
-      background:
-        linear-gradient(180deg, #0f0d0c, #090909),
-        radial-gradient(circle at 15% 70%, rgba(168, 33, 24, 0.14), transparent 28rem);
+      background: linear-gradient(180deg, #0f0d0c, #090909);
     }
 
     .chef-layout {
@@ -326,14 +287,8 @@
     }
 
     .chef-photo {
-      min-height: 440px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.55)),
-        var(--chef-image) center top / contain no-repeat,
-        linear-gradient(135deg, #241711, #080808);
-      box-shadow: var(--shadow);
+      min-height: clamp(360px, 48vw, 620px);
+      background: var(--chef-image) center / contain no-repeat;
     }
 
     .chef-card {
@@ -358,6 +313,12 @@
     /* Experiences menu */
     .menus {
       background: #090909;
+    }
+
+    .festin {
+      background:
+        linear-gradient(180deg, #0f0d0c, #090909),
+        radial-gradient(circle at 78% 28%, rgba(196, 122, 60, 0.16), transparent 28rem);
     }
 
     .menu-grid {
@@ -457,11 +418,144 @@
       line-height: 1.65;
     }
 
+    .festin-grid,
+    .choice-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .festin-card,
+    .choice-card {
+      display: grid;
+      gap: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+        rgba(9, 9, 9, 0.86);
+      box-shadow: var(--shadow);
+    }
+
+    .festin-card.featured {
+      border-color: rgba(240, 161, 95, 0.34);
+      background:
+        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        rgba(9, 9, 9, 0.9);
+    }
+
+    .festin-card h3,
+    .choice-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+    }
+
+    .contact {
+      background:
+        linear-gradient(180deg, #080808, #050505),
+        radial-gradient(circle at 22% 20%, rgba(196, 122, 60, 0.1), transparent 26rem);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 8px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+        rgba(9, 9, 9, 0.82);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 161, 95, 0.36);
+      background:
+        linear-gradient(150deg, rgba(196, 122, 60, 0.1), rgba(255, 255, 255, 0.02)),
+        rgba(9, 9, 9, 0.9);
+    }
+
+    .contact-card.featured {
+      border-color: rgba(240, 161, 95, 0.34);
+      background:
+        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        rgba(9, 9, 9, 0.9);
+    }
+
+    .contact-card span {
+      color: var(--copper-2);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-card strong {
+      color: var(--cream);
+      font-size: 1.12rem;
+      line-height: 1.35;
+    }
+
+    .festin-card.wide {
+      width: min(100%, 1040px);
+      border-color: rgba(240, 161, 95, 0.34);
+      background:
+        linear-gradient(160deg, rgba(196, 122, 60, 0.14), rgba(168, 33, 24, 0.07)),
+        rgba(9, 9, 9, 0.9);
+    }
+
+    .festin-offer {
+      display: grid;
+      gap: 18px;
+    }
+
+    .festin-examples {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .festin-examples li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(248, 234, 216, 0.11);
+      color: var(--cream-soft);
+      line-height: 1.45;
+    }
+
+    .festin-examples li:last-child {
+      border-bottom: 0;
+    }
+
+    .festin-examples strong {
+      color: var(--cream);
+      text-align: right;
+    }
+
     /* Event packs */
     .packs {
       background:
         linear-gradient(180deg, #090909, #0d0b0a),
         radial-gradient(circle at 22% 28%, rgba(196, 122, 60, 0.12), transparent 28rem);
+    }
+
+    .service-choice {
+      background:
+        linear-gradient(180deg, #0d0b0a, #080808),
+        radial-gradient(circle at 74% 35%, rgba(168, 33, 24, 0.14), transparent 30rem);
     }
 
     .pack-grid {
@@ -551,6 +645,16 @@
       line-height: 1.45;
     }
 
+    .pack-note {
+      margin-top: 14px;
+      padding: 18px 20px;
+      border: 1px solid rgba(248, 234, 216, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     .check-list {
       display: grid;
       gap: 10px;
@@ -613,6 +717,65 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
       padding: 20px;
+    }
+
+    .quote-step {
+      display: grid;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid rgba(248, 234, 216, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .quote-step + .quote-step {
+      margin-top: 16px;
+      opacity: 0.9;
+    }
+
+    .step-label {
+      color: var(--copper-2);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .estimate-box {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+      border: 1px solid rgba(240, 161, 95, 0.3);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        rgba(0, 0, 0, 0.22);
+    }
+
+    .estimate-title {
+      color: var(--copper-2);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .estimate-total {
+      color: var(--cream);
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1;
+    }
+
+    .estimate-detail {
+      color: var(--cream-soft);
+      line-height: 1.6;
+    }
+
+    .estimate-note {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
     }
 
     .form-grid {
@@ -708,11 +871,6 @@
         width: min(100% - 56px, var(--max));
       }
 
-      .experience-layout {
-        grid-template-columns: minmax(0, 1fr) 390px;
-        align-items: start;
-      }
-
       .chef-layout,
       .quote-layout {
         grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1fr);
@@ -724,6 +882,23 @@
 
       .pack-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .festin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .festin-offer {
+        grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+        align-items: center;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .form-grid {
@@ -738,11 +913,19 @@
 
     @media (min-width: 1024px) {
       .section {
-        padding: 116px 0;
+        padding: 84px 0;
       }
 
       .hero {
         padding-bottom: 86px;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
@@ -773,7 +956,7 @@
     <header class="site-header" aria-label="Identidad Festín Nápoles">
       <div class="container">
         <a class="logo-link" href="#inicio" aria-label="Festín Nápoles">
-          <img class="logo" src="logo.png" alt="Festín Nápoles" onerror="this.src='logo.png.png'">
+          <img class="logo" src="WhatsApp Image 2026-05-11 at 12.38.51 - Editado.png" alt="Festín Nápoles">
           <span class="logo-text">
             <span class="logo-title">Festín Nápoles</span>
             <span class="logo-subtitle">Catering al fuego</span>
@@ -787,39 +970,12 @@
       <section class="hero" id="inicio">
         <div class="container hero-frame">
           <div class="hero-content">
-            <span class="eyebrow">Pizza napolitana en vivo</span>
-            <h1>Pizza napolitana en vivo para eventos inolvidables</h1>
-            <p class="lead">Experiencia premium de catering con horno instalado en tu celebración.</p>
+            <span class="eyebrow">Catering napolitano en vivo</span>
+            <h1>Festín de pizza napolitana al fuego.</h1>
+            <p class="lead">Fuego, masa y pizzas recién salidas del horno en el centro de tu celebración.</p>
             <div class="hero-action">
               <a class="button" href="#cotizador">Cotizar evento</a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Sección Experiencia -->
-      <section class="section experience" id="experiencia">
-        <div class="container experience-layout">
-          <div class="experience-copy">
-            <span class="eyebrow">La experiencia</span>
-            <h2>Un catering que se vive, no solo se sirve.</h2>
-            <p>Festín Nápoles lleva el oficio de la pizza napolitana directamente a tu evento: el horno se instala en el lugar, las masas se estiran frente a los invitados y cada pizza sale al momento, con borde aireado, fuego intenso y aromas que vuelven la comida parte de la escena.</p>
-            <p>Es una propuesta pensada para matrimonios, cumpleaños, empresas y celebraciones privadas donde la gastronomía debe sentirse cuidada, cálida y memorable. No es delivery ni un restaurante trasladado: es una experiencia premium de catering en vivo.</p>
-          </div>
-
-          <div class="experience-points" aria-label="Pilares de la experiencia">
-            <article class="point">
-              <span>01</span>
-              <h3>Pizzas preparadas en vivo</h3>
-            </article>
-            <article class="point">
-              <span>02</span>
-              <h3>Horno instalado en tu evento</h3>
-            </article>
-            <article class="point">
-              <span>03</span>
-              <h3>Servicio premium para celebraciones</h3>
-            </article>
           </div>
         </div>
       </section>
@@ -879,7 +1035,6 @@
           <div class="pack-grid">
             <article class="pack-card">
               <h3>Pack 15 pizzas</h3>
-              <p>Ideal para eventos pequeños o celebraciones íntimas.</p>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
                 <strong>Hasta 30 personas aprox.</strong>
@@ -898,18 +1053,10 @@
                   <strong>15 Signature x $16.990 = $254.850</strong>
                 </div>
               </div>
-              <ul class="check-list">
-                <li>15 pizzas preparadas al momento</li>
-                <li>Montaje de estación</li>
-                <li>Horno instalado en el evento</li>
-                <li>Pizzaiolo en vivo</li>
-                <li>Selección de pizzas Tradizionale</li>
-              </ul>
             </article>
 
             <article class="pack-card highlight">
               <h3>Pack 20 pizzas</h3>
-              <p>La opción equilibrada para cumpleaños, reuniones familiares y eventos de empresa.</p>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
                 <strong>Hasta 40 personas aprox.</strong>
@@ -928,18 +1075,10 @@
                   <strong>20 Signature x $16.990 = $339.800</strong>
                 </div>
               </div>
-              <ul class="check-list">
-                <li>20 pizzas preparadas al momento</li>
-                <li>Montaje de estación</li>
-                <li>Horno instalado en el evento</li>
-                <li>Pizzaiolo en vivo</li>
-                <li>Selección Tradizionale o mixta</li>
-              </ul>
             </article>
 
             <article class="pack-card">
               <h3>Pack 30 pizzas</h3>
-              <p>Pensado para eventos de mayor volumen donde la experiencia debe fluir sin pausas.</p>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
                 <strong>Hasta 60 personas aprox.</strong>
@@ -958,88 +1097,38 @@
                   <strong>30 Signature x $16.990 = $509.700</strong>
                 </div>
               </div>
-              <ul class="check-list">
-                <li>30 pizzas preparadas al momento</li>
-                <li>Montaje de estación</li>
-                <li>Horno instalado en el evento</li>
-                <li>Pizzaiolo en vivo</li>
-                <li>Selección mixta o Signature</li>
-              </ul>
             </article>
           </div>
+
+          <p class="pack-note">Todos los packs incluyen montaje de estación, horno instalado en el evento, pizzaiolo en vivo y pizzas preparadas al momento.</p>
         </div>
       </section>
 
-      <!-- Sección Final / Cotizador -->
-      <section class="section quote" id="cotizador">
-        <div class="container quote-layout">
-          <div class="quote-copy">
-            <span class="eyebrow">Cotizador</span>
-            <h2>Solicita una cotización para tu evento.</h2>
-            <p class="lead">Completa los datos clave y prepara el primer paso para llevar el horno de Festín Nápoles a tu celebración.</p>
+      <!-- Experiencia Festín -->
+      <section class="section festin" id="experiencia-festin">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Eccellenza</span>
+            <h2>Experiencia Festín</h2>
+            <p>Pizza napolitana al fuego durante 2 horas, con horno instalado, pizzaiolo en vivo y una selección mixta Tradizionale + Signature para que tus invitados puedan repetir y disfrutar la experiencia completa.</p>
           </div>
 
-          <form class="quote-form" id="quoteForm">
-            <div class="form-grid">
-              <label>
-                Nombre
-                <input name="nombre" autocomplete="name" placeholder="Tu nombre" required>
-              </label>
-              <label>
-                Fecha
-                <input name="fecha" type="date" required>
-              </label>
-              <label>
-                Personas
-                <input id="personasInput" name="personas" type="number" min="20" max="500" step="1" placeholder="Ej: 80" required>
-                <span class="field-hint">Referencia: 1 pizza de 30 a 32 cm cada 2 personas.</span>
-              </label>
-              <label>
-                Pack de interés
-                <select name="pack" required>
-                  <option value="">Seleccionar</option>
-                  <option>Pack 15 pizzas / hasta 30 personas</option>
-                  <option>Pack 20 pizzas / hasta 40 personas</option>
-                  <option>Pack 30 pizzas / hasta 60 personas</option>
-                  <option>Propuesta personalizada</option>
-                </select>
-              </label>
-              <label>
-                Comuna
-                <input name="comuna" placeholder="Ej: Las Condes" required>
-              </label>
-              <label>
-                Tipo de evento
-                <select name="evento" required>
-                  <option value="">Seleccionar</option>
-                  <option>Matrimonio</option>
-                  <option>Cumpleaños</option>
-                  <option>Empresa</option>
-                  <option>Evento privado</option>
-                </select>
-              </label>
-              <label>
-                Experiencia de pizzas
-                <select name="linea" required>
-                  <option value="">Seleccionar</option>
-                  <option>Tradizionale</option>
-                  <option>Signature</option>
-                  <option>Mixta</option>
-                </select>
-              </label>
-              <label class="full">
-                WhatsApp
-                <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
-              </label>
-              <label class="full">
-                Comentarios especiales
-                <textarea name="comentarios" placeholder="Cuéntanos si tienes horarios, restricciones, lugar del evento o alguna idea especial."></textarea>
-              </label>
-              <button class="button" type="submit">Solicitar cotización</button>
-            </div>
-            <p class="suggestion" id="pizzaSuggestion" aria-live="polite">Ingresa la cantidad de personas para estimar pizzas sugeridas.</p>
-            <p class="form-note">El envío abre WhatsApp con tu solicitud lista para compartir.</p>
-          </form>
+          <div class="festin-grid">
+            <article class="festin-card wide">
+              <div class="festin-offer">
+                <div>
+                  <h3>Desde $9.990 por persona</h3>
+                  <p>Recomendada desde 30 invitados.</p>
+                  <a class="button" href="#cotizador">Cotizar Experiencia Festín</a>
+                </div>
+                <ul class="festin-examples" aria-label="Valores referenciales Experiencia Festín">
+                  <li><span>30 invitados</span><strong>desde $299.700</strong></li>
+                  <li><span>40 invitados</span><strong>desde $399.600</strong></li>
+                  <li><span>60 invitados</span><strong>desde $599.400</strong></li>
+                </ul>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -1058,58 +1147,276 @@
           </div>
         </div>
       </section>
+
+      <!-- Sección Final / Cotizador -->
+      <section class="section quote" id="cotizador">
+        <div class="container">
+          <div class="quote-copy">
+            <span class="eyebrow">Cotizador</span>
+            <h2>Cotiza tu evento</h2>
+            <p class="lead">Calcula una referencia y luego envíanos tus datos para preparar la propuesta.</p>
+          </div>
+
+          <form class="quote-form" id="quoteForm">
+            <div class="quote-step">
+              <span class="step-label">Paso 1 — Calcula tu evento</span>
+              <div class="form-grid">
+                <label>
+                  Tipo de servicio
+                  <select id="servicioInput" name="servicio" required>
+                    <option value="">Seleccionar</option>
+                    <option>Pack cerrado</option>
+                    <option>Experiencia Festín 2 horas</option>
+                  </select>
+                </label>
+                <label>
+                  Cantidad de personas
+                  <input id="personasInput" name="personas" type="number" min="1" max="500" step="1" placeholder="Ej: 80" required>
+                  <span class="field-hint">Referencia: 1 pizza de 30 a 32 cm cada 2 personas.</span>
+                </label>
+                <label>
+                  Experiencia de pizzas
+                  <select id="lineaInput" name="linea" required>
+                    <option value="">Seleccionar</option>
+                    <option>Tradizionale</option>
+                    <option>Mixta</option>
+                    <option>Signature</option>
+                  </select>
+                </label>
+                <label>
+                  Comuna
+                  <input id="comunaInput" name="comuna" placeholder="Ej: Las Condes" required>
+                </label>
+              </div>
+
+              <div class="estimate-box" id="estimateBox" aria-live="polite">
+                <span class="estimate-title">Precio estimado</span>
+                <strong class="estimate-total" id="estimateTotal">Completa datos</strong>
+                <p class="estimate-detail" id="estimateDetail">Completa tipo de servicio, personas y experiencia para calcular una referencia.</p>
+                <p class="estimate-note">Valores no incluyen traslado. El traslado se confirma según comuna.</p>
+                <p class="estimate-note">Para reservar la fecha se solicita un abono del 30% del total confirmado.</p>
+              </div>
+            </div>
+
+            <div class="quote-step">
+              <span class="step-label">Paso 2 — Solicita tu cotización</span>
+              <div class="form-grid">
+                <label>
+                  Nombre
+                  <input name="nombre" autocomplete="name" placeholder="Tu nombre" required>
+                </label>
+                <label>
+                  Fecha
+                  <input name="fecha" type="date" required>
+                </label>
+                <label>
+                  Tipo de evento
+                  <select name="evento" required>
+                    <option value="">Seleccionar</option>
+                    <option>Matrimonio</option>
+                    <option>Cumpleaños</option>
+                    <option>Empresa</option>
+                    <option>Evento privado</option>
+                  </select>
+                </label>
+                <label>
+                  WhatsApp
+                  <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
+                </label>
+                <label class="full">
+                  Comentarios especiales
+                  <textarea name="comentarios" placeholder="Cuéntanos si tienes horarios, restricciones, lugar del evento o alguna idea especial."></textarea>
+                </label>
+                <button class="button" type="submit">Enviar cotización por WhatsApp</button>
+              </div>
+              <p class="form-note">El envío abre WhatsApp con tu solicitud lista para compartir.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Comparación final -->
+      <section class="section service-choice" id="pack-o-festin">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Cómo elegir</span>
+            <h2>¿Qué opción elegir?</h2>
+          </div>
+
+          <div class="choice-grid">
+            <article class="choice-card">
+              <h3>Pack cerrado</h3>
+              <p>Para quienes buscan una cantidad definida de pizzas y control de presupuesto.</p>
+            </article>
+
+            <article class="choice-card">
+              <h3>Experiencia Festín</h3>
+              <p>Para quienes quieren servicio continuo, sensación de abundancia y pizzas saliendo del horno durante 2 horas.</p>
+            </article>
+
+            <article class="choice-card">
+              <h3>Mixto</h3>
+              <p>Para combinar rendimiento y sorpresa: pizzas Tradizionale para todos y opciones Signature para elevar el evento.</p>
+            </article>
+          </div>
+
+          <p class="comparison-final">Si no estás seguro, cuéntanos tu evento y te recomendamos la opción más conveniente.</p>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section class="section contact" id="contacto">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Contacto</span>
+            <h2>Hablemos de tu próximo evento.</h2>
+            <p>Cotizaciones, fechas disponibles y coordinación directa por WhatsApp.</p>
+          </div>
+
+          <div class="contact-grid" aria-label="Canales de contacto">
+            <a class="contact-card featured" href="https://wa.me/56932458647" target="_blank" rel="noopener noreferrer">
+              <span>WhatsApp</span>
+              <strong>+56 9 3245 8647</strong>
+            </a>
+            <a class="contact-card" href="mailto:festinnapoles@gmail.com">
+              <span>Mail</span>
+              <strong>festinnapoles@gmail.com</strong>
+            </a>
+            <a class="contact-card" href="https://instagram.com/festinnapoles" target="_blank" rel="noopener noreferrer">
+              <span>Instagram</span>
+              <strong>@festinnapoles</strong>
+            </a>
+            <a class="contact-card" href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+              <span>Facebook</span>
+              <strong>Festín Nápoles</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
-        <span>Festín Nápoles · Pizza napolitana en vivo</span>
-        <span>Catering premium para eventos</span>
+        <span>Festín Nápoles · Catering de pizza napolitana en vivo</span>
+        <span>Santiago, Chile · Eventos privados y corporativos</span>
       </div>
     </footer>
   </div>
 
   <script>
+    const PRICE_TRADIZIONALE = 13990;
+    const PRICE_SIGNATURE = 16990;
+    const PRICE_FESTIN_PERSON = 9990;
+
     const form = document.querySelector("#quoteForm");
+    const servicioInput = document.querySelector("#servicioInput");
     const personasInput = document.querySelector("#personasInput");
-    const pizzaSuggestion = document.querySelector("#pizzaSuggestion");
+    const lineaInput = document.querySelector("#lineaInput");
+    const comunaInput = document.querySelector("#comunaInput");
+    const estimateTotal = document.querySelector("#estimateTotal");
+    const estimateDetail = document.querySelector("#estimateDetail");
+
+    const currency = new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      currency: "CLP",
+      maximumFractionDigits: 0
+    });
 
     function getSuggestedPizzas() {
       const personas = Number(personasInput.value || 0);
       return personas > 0 ? Math.ceil(personas / 2) : 0;
     }
 
-    function updatePizzaSuggestion() {
+    function getEstimate() {
+      const servicio = servicioInput.value;
+      const linea = lineaInput.value;
       const personas = Number(personasInput.value || 0);
       const pizzas = getSuggestedPizzas();
 
-      if (!personas) {
-        pizzaSuggestion.textContent = "Ingresa la cantidad de personas para estimar pizzas sugeridas.";
-        return;
+      if (!servicio || !personas || !linea) {
+        return {
+          ready: false,
+          totalLabel: "Completa datos",
+          detail: "Completa tipo de servicio, personas y experiencia para calcular una referencia.",
+          pizzas,
+          total: null,
+          composition: ""
+        };
       }
 
-      pizzaSuggestion.textContent = `Para ${personas} personas sugerimos aproximadamente ${pizzas} pizzas de 30 a 32 cm.`;
+      if (servicio === "Experiencia Festín 2 horas") {
+        const total = personas * PRICE_FESTIN_PERSON;
+        const smallEventNote = personas < 30
+          ? " La Experiencia Festín se recomienda desde 30 invitados. Para grupos menores, podemos revisar una propuesta especial."
+          : "";
+
+        return {
+          ready: true,
+          totalLabel: currency.format(total),
+          detail: `Pizza napolitana libre durante 2 horas. Referencia de producción: ${pizzas} pizzas de 30 a 32 cm para planificar el ritmo del servicio.${smallEventNote}`,
+          pizzas,
+          total,
+          composition: "Precio referencial Experiencia Festín"
+        };
+      }
+
+      let total = 0;
+      let composition = "";
+
+      if (linea === "Tradizionale") {
+        total = pizzas * PRICE_TRADIZIONALE;
+        composition = `${pizzas} Tradizionale x ${currency.format(PRICE_TRADIZIONALE)}`;
+      } else if (linea === "Signature") {
+        total = pizzas * PRICE_SIGNATURE;
+        composition = `${pizzas} Signature x ${currency.format(PRICE_SIGNATURE)}`;
+      } else {
+        const signature = Math.ceil(pizzas * 0.3);
+        const tradizionale = pizzas - signature;
+        total = tradizionale * PRICE_TRADIZIONALE + signature * PRICE_SIGNATURE;
+        composition = `${tradizionale} Tradizionale + ${signature} Signature`;
+      }
+
+      return {
+        ready: true,
+        totalLabel: currency.format(total),
+        detail: `Personas: ${personas}. Pizzas sugeridas: ${pizzas}. ${linea === "Mixta" ? `Composición mixta: ${composition}. ` : ""}Total estimado pizzas: ${currency.format(total)}.`,
+        pizzas,
+        total,
+        composition
+      };
     }
 
-    personasInput.addEventListener("input", updatePizzaSuggestion);
-    updatePizzaSuggestion();
+    function updateEstimate() {
+      const estimate = getEstimate();
+      estimateTotal.textContent = estimate.totalLabel;
+      estimateDetail.textContent = estimate.detail;
+    }
+
+    [servicioInput, personasInput, lineaInput, comunaInput].forEach((field) => {
+      field.addEventListener("input", updateEstimate);
+      field.addEventListener("change", updateEstimate);
+    });
+    updateEstimate();
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
       const data = new FormData(form);
-      const pizzasSugeridas = getSuggestedPizzas();
+      const estimate = getEstimate();
       const message = [
         "Hola Festín Nápoles, quiero solicitar una cotización.",
+        `Tipo de servicio: ${data.get("servicio")}`,
+        `Personas: ${data.get("personas")}`,
+        `Pizzas sugeridas: ${estimate.pizzas || "Por definir"}`,
+        `Experiencia de pizzas: ${data.get("linea")}`,
+        `Comuna: ${data.get("comuna")}`,
+        `${data.get("servicio") === "Experiencia Festín 2 horas" ? "Precio referencial Experiencia Festín" : "Precio estimado"}: ${estimate.totalLabel}`,
         `Nombre: ${data.get("nombre")}`,
         `Fecha: ${data.get("fecha")}`,
-        `Personas: ${data.get("personas")}`,
-        `Pizzas sugeridas: ${pizzasSugeridas || "Por definir"}`,
-        `Pack de interés: ${data.get("pack")}`,
-        `Comuna: ${data.get("comuna")}`,
         `Tipo de evento: ${data.get("evento")}`,
-        `Experiencia de pizzas: ${data.get("linea")}`,
         `WhatsApp: ${data.get("whatsapp")}`,
-        `Comentarios especiales: ${data.get("comentarios") || "Sin comentarios"}`
+        `Comentarios: ${data.get("comentarios") || "Sin comentarios"}`
       ].join("\n");
 
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
