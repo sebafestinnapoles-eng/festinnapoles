@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Festín Nápoles | Pizza napolitana en vivo para eventos</title>
+  <meta name="description" content="Catering premium de pizza napolitana a domicilio para matrimonios, cumpleaños, empresas y eventos privados. Horno instalado, pizzaiolo profesional y pizzas al momento.">
+  <meta name="theme-color" content="#070707">
+  <meta property="og:title" content="Festín Nápoles | Catering premium de pizza napolitana">
+  <meta property="og:description" content="Pizza napolitana en vivo con horno instalado en tu celebración. Una experiencia gastronómica premium para eventos inolvidables.">
+  <meta property="og:image" content="ChatGPT Image 25 may 2026, 21_32_23.png">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070707;
+      --graphite: #10100f;
+      --graphite-2: #171311;
+      --cream: #f8ead8;
+      --cream-soft: #d8c4ae;
+      --muted: #a99784;
+      --copper: #c47a3c;
+      --copper-2: #f0a15f;
+      --napoli: #a82118;
+      --line: rgba(248, 234, 216, 0.14);
+      --glass: rgba(10, 10, 10, 0.66);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+      --radius: 8px;
+      --max: 1180px;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --hero-image: url("ChatGPT Image 25 may 2026, 21_32_23.png");
+      --chef-image: url("WhatsApp Image 2026-05-11 at 12.49.23.jpeg");
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(168, 33, 24, 0.24), transparent 32rem),
+        radial-gradient(circle at 18% 22%, rgba(196, 122, 60, 0.16), transparent 28rem),
+        linear-gradient(180deg, #050505 0%, #11100f 48%, #070707 100%);
+      color: var(--cream);
+      font-family: var(--sans);
+      letter-spacing: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      pointer-events: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--copper-2);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 980px;
+      font-size: clamp(3rem, 10vw, 7.8rem);
+      line-height: 0.93;
+    }
+
+    h2 {
+      font-size: clamp(2.35rem, 6vw, 5rem);
+      line-height: 0.98;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      line-height: 1.25;
+    }
+
+    p {
+      color: var(--cream-soft);
+      line-height: 1.72;
+    }
+
+    .lead {
+      max-width: 670px;
+      font-size: clamp(1.04rem, 2.2vw, 1.28rem);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--copper-2), var(--napoli));
+      color: #1b0a05;
+      cursor: pointer;
+      font-weight: 850;
+      box-shadow: 0 18px 44px rgba(168, 33, 24, 0.3);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 54px rgba(168, 33, 24, 0.36);
+    }
+
+    /* Header */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 22px 0;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.48));
+    }
+
+    .logo-text {
+      display: grid;
+      gap: 3px;
+    }
+
+    .logo-title {
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      line-height: 1;
+    }
+
+    .logo-subtitle {
+      color: var(--cream-soft);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 122px 0 64px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.34) 52%, rgba(0, 0, 0, 0.72)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.92)),
+        var(--hero-image) center / cover no-repeat,
+        radial-gradient(circle at 70% 32%, rgba(196, 122, 60, 0.24), transparent 24rem),
+        linear-gradient(135deg, #1a1110, #050505);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 30vh;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .hero-frame {
+      width: min(100%, 1180px);
+      aspect-ratio: 16 / 9;
+      display: grid;
+      align-items: end;
+    }
+
+    .hero-content {
+      max-width: 940px;
+    }
+
+    .hero .lead {
+      margin-top: 24px;
+    }
+
+    .hero-action {
+      margin-top: 34px;
+    }
+
+    /* Experience */
+    .experience {
+      background: linear-gradient(180deg, var(--bg), #0f0d0c);
+    }
+
+    .experience-layout {
+      display: grid;
+      gap: 28px;
+    }
+
+    .experience-copy {
+      display: grid;
+      gap: 22px;
+      max-width: 760px;
+    }
+
+    .experience-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .point {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .point span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--copper-2);
+      font-family: var(--serif);
+      font-size: 1.55rem;
+    }
+
+    /* Chef */
+    .chef {
+      background:
+        linear-gradient(180deg, #0f0d0c, #090909),
+        radial-gradient(circle at 15% 70%, rgba(168, 33, 24, 0.14), transparent 28rem);
+    }
+
+    .chef-layout {
+      display: grid;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .chef-photo {
+      min-height: 440px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.62)),
+        var(--chef-image) center / cover no-repeat,
+        linear-gradient(135deg, #241711, #080808);
+      box-shadow: var(--shadow);
+    }
+
+    .chef-card {
+      display: grid;
+      gap: 20px;
+    }
+
+    .chef-name {
+      color: var(--cream);
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 5vw, 4.1rem);
+      line-height: 1;
+    }
+
+    .chef-role {
+      color: var(--copper-2);
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* Experiences menu */
+    .menus {
+      background: #090909;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .menu-card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
+        rgba(9, 9, 9, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-card.featured {
+      border-color: rgba(240, 161, 95, 0.32);
+      background:
+        linear-gradient(150deg, rgba(196, 122, 60, 0.14), rgba(168, 33, 24, 0.08)),
+        rgba(9, 9, 9, 0.9);
+    }
+
+    .menu-card h3 {
+      margin-bottom: 8px;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 500;
+    }
+
+    .menu-card p {
+      margin-bottom: 24px;
+    }
+
+    .item-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .item-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(248, 234, 216, 0.1);
+      color: var(--cream);
+      font-weight: 650;
+    }
+
+    .item-list li::after {
+      content: "";
+      width: 42px;
+      height: 1px;
+      flex: 0 0 auto;
+      background: linear-gradient(90deg, var(--copper), transparent);
+    }
+
+    /* Gallery */
+    .gallery {
+      background:
+        linear-gradient(180deg, #090909, #0f0c0b),
+        radial-gradient(circle at 80% 45%, rgba(196, 122, 60, 0.12), transparent 28rem);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 160px;
+      gap: 12px;
+    }
+
+    .gallery-placeholder {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        linear-gradient(135deg, #211813, #090909);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .gallery-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 22%, rgba(248, 234, 216, 0.2), transparent 7rem),
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.46));
+      opacity: 0.8;
+    }
+
+    .gallery-placeholder::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      color: rgba(248, 234, 216, 0.74);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .gallery-placeholder.tall {
+      grid-row: span 2;
+    }
+
+    .gallery-placeholder.wide {
+      grid-column: span 2;
+    }
+
+    /* How it works */
+    .process {
+      background: #080808;
+    }
+
+    .steps {
+      display: grid;
+      border-top: 1px solid var(--line);
+    }
+
+    .step {
+      display: grid;
+      gap: 14px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step-number {
+      color: var(--copper-2);
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .step h3 {
+      color: var(--cream);
+    }
+
+    /* Quote form */
+    .quote {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.92)),
+        var(--hero-image) center / cover no-repeat,
+        #090909;
+    }
+
+    .quote-layout {
+      display: grid;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .quote-copy {
+      display: grid;
+      gap: 20px;
+    }
+
+    .quote-form {
+      border: 1px solid rgba(248, 234, 216, 0.18);
+      border-radius: var(--radius);
+      background: rgba(7, 7, 7, 0.78);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      padding: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--cream);
+      font-size: 0.84rem;
+      font-weight: 760;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(248, 234, 216, 0.16);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.055);
+      color: var(--cream);
+      padding: 12px 13px;
+      outline: none;
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(240, 161, 95, 0.78);
+      background: rgba(255, 255, 255, 0.082);
+    }
+
+    select option {
+      color: var(--cream);
+      background: #111;
+    }
+
+    .quote-form .button {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .form-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      background: #050505;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 720px) {
+      .container {
+        width: min(100% - 56px, var(--max));
+      }
+
+      .experience-layout {
+        grid-template-columns: minmax(0, 1fr) 390px;
+        align-items: start;
+      }
+
+      .chef-layout,
+      .quote-layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1fr);
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 180px;
+      }
+
+      .steps {
+        grid-template-columns: repeat(4, 1fr);
+        border-left: 1px solid var(--line);
+      }
+
+      .step {
+        min-height: 240px;
+        padding: 28px;
+        border-right: 1px solid var(--line);
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-grid .full,
+      .quote-form .button {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section {
+        padding: 116px 0;
+      }
+
+      .hero {
+        padding-bottom: 86px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .logo-text {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-frame {
+        aspect-ratio: auto;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 170px;
+      }
+
+      .gallery-placeholder.wide {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- Header -->
+    <header class="site-header" aria-label="Identidad Festín Nápoles">
+      <div class="container">
+        <a class="logo-link" href="#inicio" aria-label="Festín Nápoles">
+          <img class="logo" src="logo.png" alt="Festín Nápoles" onerror="this.src='logo.png.png'">
+          <span class="logo-text">
+            <span class="logo-title">Festín Nápoles</span>
+            <span class="logo-subtitle">Catering al fuego</span>
+          </span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="inicio">
+        <div class="container hero-frame">
+          <div class="hero-content">
+            <span class="eyebrow">Pizza napolitana en vivo</span>
+            <h1>Pizza napolitana en vivo para eventos inolvidables</h1>
+            <p class="lead">Experiencia premium de catering con horno instalado en tu celebración.</p>
+            <div class="hero-action">
+              <a class="button" href="#cotizador">Cotizar evento</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Experiencia -->
+      <section class="section experience" id="experiencia">
+        <div class="container experience-layout">
+          <div class="experience-copy">
+            <span class="eyebrow">La experiencia</span>
+            <h2>Un catering que se vive, no solo se sirve.</h2>
+            <p>Festín Nápoles lleva el oficio de la pizza napolitana directamente a tu evento: el horno se instala en el lugar, las masas se estiran frente a los invitados y cada pizza sale al momento, con borde aireado, fuego intenso y aromas que vuelven la comida parte de la escena.</p>
+            <p>Es una propuesta pensada para matrimonios, cumpleaños, empresas y celebraciones privadas donde la gastronomía debe sentirse cuidada, cálida y memorable. No es delivery ni un restaurante trasladado: es una experiencia premium de catering en vivo.</p>
+          </div>
+
+          <div class="experience-points" aria-label="Pilares de la experiencia">
+            <article class="point">
+              <span>01</span>
+              <h3>Pizzas preparadas en vivo</h3>
+            </article>
+            <article class="point">
+              <span>02</span>
+              <h3>Horno instalado en tu evento</h3>
+            </article>
+            <article class="point">
+              <span>03</span>
+              <h3>Servicio premium para celebraciones</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Chef -->
+      <section class="section chef" id="chef">
+        <div class="container chef-layout">
+          <div class="chef-photo" role="img" aria-label="Chef Sebastián Siña"></div>
+          <div class="chef-card">
+            <span class="eyebrow">El pizzaiolo</span>
+            <div>
+              <p class="chef-name">Chef Sebastián Siña</p>
+              <p class="chef-role">Pizzaiolo profesional</p>
+            </div>
+            <p>Sebastián trabaja la pizza napolitana desde la paciencia: fermentación lenta, masa viva, ingredientes honestos y una cocción breve e intensa que respeta el carácter de Nápoles.</p>
+            <p>Su mirada combina técnica y hospitalidad. En cada evento busca que el horno sea un punto de encuentro, que los invitados vean el proceso y que cada pizza llegue a la mesa con la energía de algo recién hecho.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Experiencias -->
+      <section class="section menus" id="experiencias">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Experiencias</span>
+            <h2>Dos caminos para diseñar la noche.</h2>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-card">
+              <h3>Tradicional</h3>
+              <p>Las favoritas de siempre</p>
+              <ul class="item-list">
+                <li>Margherita</li>
+                <li>Pepperoni</li>
+                <li>Carnívora</li>
+                <li>Diavola</li>
+                <li>Veggie Lover</li>
+                <li>Jamón & Champiñón</li>
+              </ul>
+            </article>
+
+            <article class="menu-card featured">
+              <h3>Premium / Signature</h3>
+              <p>Ingredientes italianos y recetas de autor</p>
+              <ul class="item-list">
+                <li>La Nápoles</li>
+                <li>Prosciutto & Rúcula</li>
+                <li>Guanciale Bianca</li>
+                <li>La Nonna Pera</li>
+                <li>Trufa Funghi</li>
+                <li>La Diavola Signature</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galería Visual -->
+      <section class="section gallery" id="galeria">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Galería visual</span>
+            <h2>Espacios listos para futuras imágenes.</h2>
+            <p>Una grilla editorial para mostrar horno, fuego, montaje, ingredientes y momentos de evento cuando sumes nuevas fotografías.</p>
+          </div>
+
+          <div class="gallery-grid" aria-label="Galería de imágenes futuras">
+            <div class="gallery-placeholder tall" data-label="Horno"></div>
+            <div class="gallery-placeholder" data-label="Masa"></div>
+            <div class="gallery-placeholder wide" data-label="Evento nocturno"></div>
+            <div class="gallery-placeholder" data-label="Ingredientes"></div>
+            <div class="gallery-placeholder tall" data-label="Servicio"></div>
+            <div class="gallery-placeholder" data-label="Fuego"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cómo Funciona -->
+      <section class="section process" id="como-funciona">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Cómo funciona</span>
+            <h2>De la reserva al primer corte.</h2>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">01</span>
+              <h3>Reservas fecha</h3>
+              <p>Confirmamos disponibilidad y entendemos el tipo de celebración.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">02</span>
+              <h3>Llegamos al evento</h3>
+              <p>El equipo se presenta con los tiempos necesarios para preparar todo.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">03</span>
+              <h3>Instalamos horno</h3>
+              <p>Montamos la estación de pizza con una presencia limpia y elegante.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">04</span>
+              <h3>Servimos pizzas al momento</h3>
+              <p>Las pizzas salen calientes, vivas y listas para compartir.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Final / Cotizador -->
+      <section class="section quote" id="cotizador">
+        <div class="container quote-layout">
+          <div class="quote-copy">
+            <span class="eyebrow">Cotizador</span>
+            <h2>Solicita una cotización para tu evento.</h2>
+            <p class="lead">Completa los datos clave y prepara el primer paso para llevar el horno de Festín Nápoles a tu celebración.</p>
+          </div>
+
+          <form class="quote-form" id="quoteForm">
+            <div class="form-grid">
+              <label>
+                Nombre
+                <input name="nombre" autocomplete="name" placeholder="Tu nombre" required>
+              </label>
+              <label>
+                Fecha
+                <input name="fecha" type="date" required>
+              </label>
+              <label>
+                Personas
+                <input name="personas" type="number" min="20" max="500" step="5" placeholder="Ej: 80" required>
+              </label>
+              <label>
+                Comuna
+                <input name="comuna" placeholder="Ej: Las Condes" required>
+              </label>
+              <label>
+                Tipo de evento
+                <select name="evento" required>
+                  <option value="">Seleccionar</option>
+                  <option>Matrimonio</option>
+                  <option>Cumpleaños</option>
+                  <option>Empresa</option>
+                  <option>Evento privado</option>
+                </select>
+              </label>
+              <label>
+                Tipo de experiencia
+                <select name="experiencia" required>
+                  <option value="">Seleccionar</option>
+                  <option>Tradicional</option>
+                  <option>Premium / Signature</option>
+                  <option>Mixta</option>
+                </select>
+              </label>
+              <label class="full">
+                WhatsApp
+                <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
+              </label>
+              <button class="button" type="submit">Solicitar cotización</button>
+            </div>
+            <p class="form-note">El envío abre WhatsApp con tu solicitud lista para compartir.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>Festín Nápoles · Pizza napolitana en vivo</span>
+        <span>Catering premium para eventos</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.querySelector("#quoteForm");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const message = [
+        "Hola Festín Nápoles, quiero solicitar una cotización.",
+        `Nombre: ${data.get("nombre")}`,
+        `Fecha: ${data.get("fecha")}`,
+        `Personas: ${data.get("personas")}`,
+        `Comuna: ${data.get("comuna")}`,
+        `Tipo de evento: ${data.get("evento")}`,
+        `Tipo de experiencia: ${data.get("experiencia")}`,
+        `WhatsApp: ${data.get("whatsapp")}`
+      ].join("\n");
+
+      window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
