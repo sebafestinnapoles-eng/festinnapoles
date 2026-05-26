@@ -78,7 +78,8 @@
 
     button,
     input,
-    select {
+    select,
+    textarea {
       font: inherit;
     }
 
@@ -329,8 +330,8 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background:
-        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.62)),
-        var(--chef-image) center / cover no-repeat,
+        linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.55)),
+        var(--chef-image) center top / contain no-repeat,
         linear-gradient(135deg, #241711, #080808);
       box-shadow: var(--shadow);
     }
@@ -419,87 +420,168 @@
       background: linear-gradient(90deg, var(--copper), transparent);
     }
 
-    /* Gallery */
-    .gallery {
-      background:
-        linear-gradient(180deg, #090909, #0f0c0b),
-        radial-gradient(circle at 80% 45%, rgba(196, 122, 60, 0.12), transparent 28rem);
-    }
-
-    .gallery-grid {
+    .pizza-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 160px;
-      gap: 12px;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .gallery-placeholder {
-      position: relative;
+    .pizza-list li {
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(248, 234, 216, 0.1);
+      color: var(--cream-soft);
+      line-height: 1.55;
+    }
+
+    .pizza-list strong {
+      color: var(--cream);
+    }
+
+    .menu-note {
+      color: var(--cream-soft);
+    }
+
+    .price {
+      display: block;
+      margin: 22px 0 12px;
+      color: var(--copper-2);
+      font-size: 1.25rem;
+      font-weight: 850;
+    }
+
+    .menu-insight {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    /* Event packs */
+    .packs {
+      background:
+        linear-gradient(180deg, #090909, #0d0b0a),
+        radial-gradient(circle at 22% 28%, rgba(196, 122, 60, 0.12), transparent 28rem);
+    }
+
+    .pack-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .pack-card {
+      display: grid;
+      gap: 20px;
+      padding: 26px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
-        linear-gradient(135deg, #211813, #090909);
-      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.28);
+        linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018)),
+        rgba(9, 9, 9, 0.86);
+      box-shadow: var(--shadow);
     }
 
-    .gallery-placeholder::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .pack-card.highlight {
+      border-color: rgba(240, 161, 95, 0.34);
       background:
-        radial-gradient(circle at 30% 22%, rgba(248, 234, 216, 0.2), transparent 7rem),
-        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.46));
-      opacity: 0.8;
+        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        rgba(9, 9, 9, 0.9);
     }
 
-    .gallery-placeholder::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 18px;
-      bottom: 16px;
-      color: rgba(248, 234, 216, 0.74);
-      font-size: 0.78rem;
+    .pack-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+    }
+
+    .capacity {
+      display: grid;
+      gap: 4px;
+      padding: 16px;
+      border: 1px solid rgba(248, 234, 216, 0.12);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .capacity span {
+      color: var(--copper-2);
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .gallery-placeholder.tall {
-      grid-row: span 2;
-    }
-
-    .gallery-placeholder.wide {
-      grid-column: span 2;
-    }
-
-    /* How it works */
-    .process {
-      background: #080808;
-    }
-
-    .steps {
-      display: grid;
-      border-top: 1px solid var(--line);
-    }
-
-    .step {
-      display: grid;
-      gap: 14px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .step-number {
-      color: var(--copper-2);
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      line-height: 1;
-    }
-
-    .step h3 {
+    .capacity strong {
       color: var(--cream);
+      font-size: 1.06rem;
+    }
+
+    .pack-pricing {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid rgba(248, 234, 216, 0.12);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .pack-price-row {
+      display: grid;
+      gap: 3px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(248, 234, 216, 0.1);
+    }
+
+    .pack-price-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .pack-price-row span {
+      color: var(--copper-2);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pack-price-row strong {
+      color: var(--cream);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--cream-soft);
+      line-height: 1.5;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--copper-2);
+      box-shadow: 0 0 18px rgba(240, 161, 95, 0.45);
+    }
+
+    .comparison-final {
+      margin-top: 24px;
+      color: var(--cream);
+      font-size: 1.08rem;
     }
 
     /* Quote form */
@@ -547,7 +629,8 @@
     }
 
     input,
-    select {
+    select,
+    textarea {
       width: 100%;
       min-height: 52px;
       border: 1px solid rgba(248, 234, 216, 0.16);
@@ -560,9 +643,15 @@
     }
 
     input:focus,
-    select:focus {
+    select:focus,
+    textarea:focus {
       border-color: rgba(240, 161, 95, 0.78);
       background: rgba(255, 255, 255, 0.082);
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
     }
 
     select option {
@@ -579,6 +668,24 @@
       margin-top: 14px;
       color: var(--muted);
       font-size: 0.82rem;
+    }
+
+    .field-hint {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .suggestion {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(240, 161, 95, 0.22);
+      border-radius: 6px;
+      background: rgba(196, 122, 60, 0.08);
+      color: var(--cream);
+      font-size: 0.92rem;
+      line-height: 1.5;
     }
 
     .footer {
@@ -615,20 +722,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 180px;
-      }
-
-      .steps {
-        grid-template-columns: repeat(4, 1fr);
-        border-left: 1px solid var(--line);
-      }
-
-      .step {
-        min-height: 240px;
-        padding: 28px;
-        border-right: 1px solid var(--line);
+      .pack-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .form-grid {
@@ -668,14 +763,6 @@
         width: 100%;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 170px;
-      }
-
-      .gallery-placeholder.wide {
-        grid-column: auto;
-      }
     }
   </style>
 </head>
@@ -737,22 +824,6 @@
         </div>
       </section>
 
-      <!-- Sección Chef -->
-      <section class="section chef" id="chef">
-        <div class="container chef-layout">
-          <div class="chef-photo" role="img" aria-label="Chef Sebastián Siña"></div>
-          <div class="chef-card">
-            <span class="eyebrow">El pizzaiolo</span>
-            <div>
-              <p class="chef-name">Chef Sebastián Siña</p>
-              <p class="chef-role">Pizzaiolo profesional</p>
-            </div>
-            <p>Sebastián trabaja la pizza napolitana desde la paciencia: fermentación lenta, masa viva, ingredientes honestos y una cocción breve e intensa que respeta el carácter de Nápoles.</p>
-            <p>Su mirada combina técnica y hospitalidad. En cada evento busca que el horno sea un punto de encuentro, que los invitados vean el proceso y que cada pizza llegue a la mesa con la energía de algo recién hecho.</p>
-          </div>
-        </div>
-      </section>
-
       <!-- Sección Experiencias -->
       <section class="section menus" id="experiencias">
         <div class="container">
@@ -763,82 +834,137 @@
 
           <div class="menu-grid">
             <article class="menu-card">
-              <h3>Tradicional</h3>
-              <p>Las favoritas de siempre</p>
-              <ul class="item-list">
-                <li>Margherita</li>
-                <li>Pepperoni</li>
-                <li>Carnívora</li>
-                <li>Diavola</li>
-                <li>Veggie Lover</li>
-                <li>Jamón & Champiñón</li>
+              <h3>Tradizionale</h3>
+              <p>Las favoritas de siempre, pensadas para eventos familiares, empresas y celebraciones donde todos quieren repetir.</p>
+              <p class="menu-note">Base de salsa de tomate, queso fundido y combinaciones clásicas de alta aceptación.</p>
+              <ul class="pizza-list">
+                <li><strong>Margherita:</strong> pomodoro, tomate fresco, albahaca y aceite de oliva.</li>
+                <li><strong>Carnívora:</strong> carne, cerdo, champiñones salteados y cebolla caramelizada.</li>
+                <li><strong>Diavola:</strong> salchicha italiana, ají, mix de pimentones y choclo tostado.</li>
+                <li><strong>Veggie Lover:</strong> espinaca, tomate fresco, choclo, cebolla y pimentón.</li>
+                <li><strong>Pepperoni:</strong> pepperoni americano y queso fundido.</li>
               </ul>
+              <span class="price">Desde $13.990 por pizza</span>
+              <p class="menu-insight">Salsa clásica, queso fundido e ingredientes familiares: una línea de mayor rendimiento, ideal para eventos masivos.</p>
             </article>
 
             <article class="menu-card featured">
-              <h3>Premium / Signature</h3>
-              <p>Ingredientes italianos y recetas de autor</p>
-              <ul class="item-list">
-                <li>La Nápoles</li>
-                <li>Prosciutto & Rúcula</li>
-                <li>Guanciale Bianca</li>
-                <li>La Nonna Pera</li>
-                <li>Trufa Funghi</li>
-                <li>La Diavola Signature</li>
+              <h3>Signature</h3>
+              <p>Recetas de autor con ingredientes especiales, terminaciones gourmet y sabores pensados para elevar la experiencia del evento.</p>
+              <p class="menu-note">Una línea diseñada para sorprender: ideal para eventos donde la pizza también debe generar conversación.</p>
+              <ul class="pizza-list">
+                <li><strong>Extravaganza:</strong> salchicha italiana, carne, cerdo, cebolla, pimentones asados y albahaca fresca.</li>
+                <li><strong>Mare Nero:</strong> camarones al ajillo, calamares a la pimienta, cebolla morada y aceitunas negras.</li>
+                <li><strong>Fugazza:</strong> mix de cebollas caramelizadas lentamente sobre mozzarella premium.</li>
+                <li><strong>Tartufo Nero:</strong> salsa Alfredo, champiñones trufados, rúcula fresca y aceite de trufa.</li>
+              </ul>
+              <span class="price">Desde $16.990 por pizza</span>
+              <p class="menu-insight">Quesos especiales, bases seleccionadas, mar, trufa, rúcula y salchicha italiana para elevar la percepción gastronómica del evento.</p>
+            </article>
+          </div>
+
+          <p class="comparison-final">También puedes combinar ambas líneas en una experiencia mixta: pizzas clásicas para todos y opciones signature para elevar el evento.</p>
+        </div>
+      </section>
+
+      <!-- Packs para Eventos -->
+      <section class="section packs" id="packs">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Packs para eventos</span>
+            <h2>Formatos claros para que la experiencia fluya.</h2>
+            <p>Elige una base según el tamaño de tu celebración. Desde ahí ajustamos comuna, horarios, experiencia de pizzas y requerimientos especiales.</p>
+          </div>
+
+          <div class="pack-grid">
+            <article class="pack-card">
+              <h3>Pack 15 pizzas</h3>
+              <p>Ideal para eventos pequeños o celebraciones íntimas.</p>
+              <div class="capacity">
+                <span>Capacidad sugerida</span>
+                <strong>Hasta 30 personas aprox.</strong>
+              </div>
+              <div class="pack-pricing" aria-label="Valores estimados Pack 15 pizzas">
+                <div class="pack-price-row">
+                  <span>Tradizionale</span>
+                  <strong>15 Tradizionale x $13.990 = $209.850</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Mixto</span>
+                  <strong>11 Tradizionale + 4 Signature = $221.850</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Signature</span>
+                  <strong>15 Signature x $16.990 = $254.850</strong>
+                </div>
+              </div>
+              <ul class="check-list">
+                <li>15 pizzas preparadas al momento</li>
+                <li>Montaje de estación</li>
+                <li>Horno instalado en el evento</li>
+                <li>Pizzaiolo en vivo</li>
+                <li>Selección de pizzas Tradizionale</li>
               </ul>
             </article>
-          </div>
-        </div>
-      </section>
 
-      <!-- Galería Visual -->
-      <section class="section gallery" id="galeria">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Galería visual</span>
-            <h2>Espacios listos para futuras imágenes.</h2>
-            <p>Una grilla editorial para mostrar horno, fuego, montaje, ingredientes y momentos de evento cuando sumes nuevas fotografías.</p>
-          </div>
-
-          <div class="gallery-grid" aria-label="Galería de imágenes futuras">
-            <div class="gallery-placeholder tall" data-label="Horno"></div>
-            <div class="gallery-placeholder" data-label="Masa"></div>
-            <div class="gallery-placeholder wide" data-label="Evento nocturno"></div>
-            <div class="gallery-placeholder" data-label="Ingredientes"></div>
-            <div class="gallery-placeholder tall" data-label="Servicio"></div>
-            <div class="gallery-placeholder" data-label="Fuego"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Cómo Funciona -->
-      <section class="section process" id="como-funciona">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Cómo funciona</span>
-            <h2>De la reserva al primer corte.</h2>
-          </div>
-
-          <div class="steps">
-            <article class="step">
-              <span class="step-number">01</span>
-              <h3>Reservas fecha</h3>
-              <p>Confirmamos disponibilidad y entendemos el tipo de celebración.</p>
+            <article class="pack-card highlight">
+              <h3>Pack 20 pizzas</h3>
+              <p>La opción equilibrada para cumpleaños, reuniones familiares y eventos de empresa.</p>
+              <div class="capacity">
+                <span>Capacidad sugerida</span>
+                <strong>Hasta 40 personas aprox.</strong>
+              </div>
+              <div class="pack-pricing" aria-label="Valores estimados Pack 20 pizzas">
+                <div class="pack-price-row">
+                  <span>Tradizionale</span>
+                  <strong>20 Tradizionale x $13.990 = $279.800</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Mixto</span>
+                  <strong>14 Tradizionale + 6 Signature = $297.800</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Signature</span>
+                  <strong>20 Signature x $16.990 = $339.800</strong>
+                </div>
+              </div>
+              <ul class="check-list">
+                <li>20 pizzas preparadas al momento</li>
+                <li>Montaje de estación</li>
+                <li>Horno instalado en el evento</li>
+                <li>Pizzaiolo en vivo</li>
+                <li>Selección Tradizionale o mixta</li>
+              </ul>
             </article>
-            <article class="step">
-              <span class="step-number">02</span>
-              <h3>Llegamos al evento</h3>
-              <p>El equipo se presenta con los tiempos necesarios para preparar todo.</p>
-            </article>
-            <article class="step">
-              <span class="step-number">03</span>
-              <h3>Instalamos horno</h3>
-              <p>Montamos la estación de pizza con una presencia limpia y elegante.</p>
-            </article>
-            <article class="step">
-              <span class="step-number">04</span>
-              <h3>Servimos pizzas al momento</h3>
-              <p>Las pizzas salen calientes, vivas y listas para compartir.</p>
+
+            <article class="pack-card">
+              <h3>Pack 30 pizzas</h3>
+              <p>Pensado para eventos de mayor volumen donde la experiencia debe fluir sin pausas.</p>
+              <div class="capacity">
+                <span>Capacidad sugerida</span>
+                <strong>Hasta 60 personas aprox.</strong>
+              </div>
+              <div class="pack-pricing" aria-label="Valores estimados Pack 30 pizzas">
+                <div class="pack-price-row">
+                  <span>Tradizionale</span>
+                  <strong>30 Tradizionale x $13.990 = $419.700</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Mixto</span>
+                  <strong>21 Tradizionale + 9 Signature = $446.700</strong>
+                </div>
+                <div class="pack-price-row">
+                  <span>Signature</span>
+                  <strong>30 Signature x $16.990 = $509.700</strong>
+                </div>
+              </div>
+              <ul class="check-list">
+                <li>30 pizzas preparadas al momento</li>
+                <li>Montaje de estación</li>
+                <li>Horno instalado en el evento</li>
+                <li>Pizzaiolo en vivo</li>
+                <li>Selección mixta o Signature</li>
+              </ul>
             </article>
           </div>
         </div>
@@ -865,7 +991,18 @@
               </label>
               <label>
                 Personas
-                <input name="personas" type="number" min="20" max="500" step="5" placeholder="Ej: 80" required>
+                <input id="personasInput" name="personas" type="number" min="20" max="500" step="1" placeholder="Ej: 80" required>
+                <span class="field-hint">Referencia: 1 pizza de 30 a 32 cm cada 2 personas.</span>
+              </label>
+              <label>
+                Pack de interés
+                <select name="pack" required>
+                  <option value="">Seleccionar</option>
+                  <option>Pack 15 pizzas / hasta 30 personas</option>
+                  <option>Pack 20 pizzas / hasta 40 personas</option>
+                  <option>Pack 30 pizzas / hasta 60 personas</option>
+                  <option>Propuesta personalizada</option>
+                </select>
               </label>
               <label>
                 Comuna
@@ -882,11 +1019,11 @@
                 </select>
               </label>
               <label>
-                Tipo de experiencia
-                <select name="experiencia" required>
+                Experiencia de pizzas
+                <select name="linea" required>
                   <option value="">Seleccionar</option>
-                  <option>Tradicional</option>
-                  <option>Premium / Signature</option>
+                  <option>Tradizionale</option>
+                  <option>Signature</option>
                   <option>Mixta</option>
                 </select>
               </label>
@@ -894,10 +1031,31 @@
                 WhatsApp
                 <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
               </label>
+              <label class="full">
+                Comentarios especiales
+                <textarea name="comentarios" placeholder="Cuéntanos si tienes horarios, restricciones, lugar del evento o alguna idea especial."></textarea>
+              </label>
               <button class="button" type="submit">Solicitar cotización</button>
             </div>
+            <p class="suggestion" id="pizzaSuggestion" aria-live="polite">Ingresa la cantidad de personas para estimar pizzas sugeridas.</p>
             <p class="form-note">El envío abre WhatsApp con tu solicitud lista para compartir.</p>
           </form>
+        </div>
+      </section>
+
+      <!-- Sección Chef -->
+      <section class="section chef" id="chef">
+        <div class="container chef-layout">
+          <div class="chef-photo" role="img" aria-label="Chef Sebastián Siña"></div>
+          <div class="chef-card">
+            <span class="eyebrow">El pizzaiolo</span>
+            <div>
+              <p class="chef-name">Chef Sebastián Siña</p>
+              <p class="chef-role">Pizzaiolo profesional</p>
+            </div>
+            <p>Sebastián trabaja la pizza napolitana desde la paciencia: fermentación lenta, masa viva, ingredientes honestos y una cocción breve e intensa que respeta el carácter de Nápoles.</p>
+            <p>Su mirada combina técnica y hospitalidad. En cada evento busca que el horno sea un punto de encuentro, que los invitados vean el proceso y que cada pizza llegue a la mesa con la energía de algo recién hecho.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -912,20 +1070,46 @@
 
   <script>
     const form = document.querySelector("#quoteForm");
+    const personasInput = document.querySelector("#personasInput");
+    const pizzaSuggestion = document.querySelector("#pizzaSuggestion");
+
+    function getSuggestedPizzas() {
+      const personas = Number(personasInput.value || 0);
+      return personas > 0 ? Math.ceil(personas / 2) : 0;
+    }
+
+    function updatePizzaSuggestion() {
+      const personas = Number(personasInput.value || 0);
+      const pizzas = getSuggestedPizzas();
+
+      if (!personas) {
+        pizzaSuggestion.textContent = "Ingresa la cantidad de personas para estimar pizzas sugeridas.";
+        return;
+      }
+
+      pizzaSuggestion.textContent = `Para ${personas} personas sugerimos aproximadamente ${pizzas} pizzas de 30 a 32 cm.`;
+    }
+
+    personasInput.addEventListener("input", updatePizzaSuggestion);
+    updatePizzaSuggestion();
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
       const data = new FormData(form);
+      const pizzasSugeridas = getSuggestedPizzas();
       const message = [
         "Hola Festín Nápoles, quiero solicitar una cotización.",
         `Nombre: ${data.get("nombre")}`,
         `Fecha: ${data.get("fecha")}`,
         `Personas: ${data.get("personas")}`,
+        `Pizzas sugeridas: ${pizzasSugeridas || "Por definir"}`,
+        `Pack de interés: ${data.get("pack")}`,
         `Comuna: ${data.get("comuna")}`,
         `Tipo de evento: ${data.get("evento")}`,
-        `Tipo de experiencia: ${data.get("experiencia")}`,
-        `WhatsApp: ${data.get("whatsapp")}`
+        `Experiencia de pizzas: ${data.get("linea")}`,
+        `WhatsApp: ${data.get("whatsapp")}`,
+        `Comentarios especiales: ${data.get("comentarios") || "Sin comentarios"}`
       ].join("\n");
 
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
