@@ -178,13 +178,27 @@
       cursor: pointer;
       font-weight: 850;
       box-shadow: 0 18px 44px rgba(11, 42, 91, 0.25), 0 8px 28px rgba(179, 32, 37, 0.18);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease, filter 320ms ease;
+      will-change: transform;
     }
 
     .button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
       filter: brightness(1.08);
       box-shadow: 0 24px 58px rgba(11, 42, 91, 0.34), 0 12px 34px rgba(179, 32, 37, 0.24);
+    }
+
+    .button:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid rgba(243, 235, 221, 0.86);
+      outline-offset: 4px;
     }
 
     /* Header */
@@ -249,6 +263,9 @@
         var(--hero-image) center / cover no-repeat,
         radial-gradient(circle at 70% 32%, rgba(11, 42, 91, 0.25), transparent 24rem),
         linear-gradient(135deg, #101015, #050505);
+      animation: cinematicBreath 24s ease-in-out infinite alternate;
+      transform-origin: center;
+      will-change: transform;
     }
 
     .hero::after {
@@ -293,6 +310,8 @@
     .chef-photo {
       min-height: clamp(360px, 48vw, 620px);
       background: var(--chef-image) center / contain no-repeat;
+      animation: photoBreath 22s ease-in-out infinite alternate;
+      transform-origin: center;
     }
 
     .chef-card {
@@ -338,6 +357,13 @@
         linear-gradient(150deg, rgba(11, 42, 91, 0.11), rgba(255, 255, 255, 0.018)),
         rgba(9, 9, 9, 0.82);
       box-shadow: var(--shadow);
+      transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 340ms ease, border-color 340ms ease, background 340ms ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(11, 42, 91, 0.66);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(11, 42, 91, 0.18);
     }
 
     .menu-card.featured {
@@ -345,6 +371,11 @@
       background:
         linear-gradient(150deg, rgba(179, 32, 37, 0.12), rgba(11, 42, 91, 0.08)),
         rgba(9, 9, 9, 0.9);
+    }
+
+    .menu-card.featured:hover {
+      border-color: rgba(179, 32, 37, 0.62);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(179, 32, 37, 0.18);
     }
 
     .menu-card h3 {
@@ -448,6 +479,14 @@
         linear-gradient(150deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
         rgba(9, 9, 9, 0.86);
       box-shadow: var(--shadow);
+      transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 340ms ease, border-color 340ms ease, background 340ms ease;
+    }
+
+    .festin-card:hover,
+    .choice-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(179, 32, 37, 0.5);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(11, 42, 91, 0.16), 0 10px 34px rgba(179, 32, 37, 0.12);
     }
 
     .festin-card.featured {
@@ -485,12 +524,13 @@
         linear-gradient(150deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
         rgba(9, 9, 9, 0.82);
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 340ms ease, border-color 340ms ease, background 340ms ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
       border-color: rgba(11, 42, 91, 0.5);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42), 0 12px 36px rgba(11, 42, 91, 0.18);
       background:
         linear-gradient(150deg, rgba(11, 42, 91, 0.13), rgba(255, 255, 255, 0.02)),
         rgba(9, 9, 9, 0.9);
@@ -586,6 +626,13 @@
         linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018)),
         rgba(9, 9, 9, 0.86);
       box-shadow: var(--shadow);
+      transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 340ms ease, border-color 340ms ease, background 340ms ease;
+    }
+
+    .pack-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(11, 42, 91, 0.56);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(11, 42, 91, 0.17);
     }
 
     .pack-card.highlight {
@@ -593,6 +640,11 @@
       background:
         linear-gradient(160deg, rgba(11, 42, 91, 0.16), rgba(179, 32, 37, 0.08)),
         rgba(9, 9, 9, 0.9);
+    }
+
+    .pack-card.highlight:hover {
+      border-color: rgba(179, 32, 37, 0.54);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(179, 32, 37, 0.16);
     }
 
     .pack-card h3 {
@@ -877,6 +929,56 @@
       flex-wrap: wrap;
       gap: 10px 24px;
       justify-content: space-between;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 820ms ease,
+        transform 820ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 340ms ease,
+        border-color 340ms ease,
+        background 340ms ease,
+        filter 320ms ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes cinematicBreath {
+      from {
+        transform: scale(1) translate3d(0, 0, 0);
+      }
+      to {
+        transform: scale(1.035) translate3d(-0.6%, -0.4%, 0);
+      }
+    }
+
+    @keyframes photoBreath {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.018);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     @media (min-width: 720px) {
@@ -1318,6 +1420,30 @@
   </div>
 
   <script>
+    const revealTargets = document.querySelectorAll(
+      ".section-header, .menu-card, .pack-card, .festin-card, .choice-card, .quote-form, .quote-copy, .chef-photo, .chef-card, .contact-card"
+    );
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    revealTargets.forEach((target) => target.classList.add("reveal"));
+
+    if (prefersReducedMotion) {
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.12
+      });
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    }
+
     const PRICE_TRADIZIONALE = 13990;
     const PRICE_SIGNATURE = 16990;
     const PRICE_FESTIN_PERSON = 9990;
