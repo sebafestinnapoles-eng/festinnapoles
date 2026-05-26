@@ -344,51 +344,159 @@
         radial-gradient(circle at 78% 28%, rgba(11, 42, 91, 0.2), transparent 28rem);
     }
 
-    .menu-grid {
+    .pizza-line {
       display: grid;
-      gap: 16px;
+      gap: 22px;
     }
 
-    .menu-card {
-      padding: 26px;
-      border: 1px solid rgba(11, 42, 91, 0.42);
+    .pizza-line + .pizza-line {
+      margin-top: 54px;
+    }
+
+    .pizza-line-copy {
+      display: grid;
+      gap: 8px;
+      max-width: 760px;
+    }
+
+    .pizza-line-copy h3 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 500;
+      letter-spacing: 0.035em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .pizza-line-copy p {
+      max-width: 520px;
+      color: var(--cream-soft);
+      font-size: 1.03rem;
+    }
+
+    .pizza-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pizza-card {
+      overflow: hidden;
+      border: 1px solid rgba(11, 42, 91, 0.36);
       border-radius: var(--radius);
       background:
-        linear-gradient(150deg, rgba(11, 42, 91, 0.11), rgba(255, 255, 255, 0.018)),
-        rgba(9, 9, 9, 0.82);
+        linear-gradient(150deg, rgba(11, 42, 91, 0.1), rgba(255, 255, 255, 0.018)),
+        rgba(9, 9, 9, 0.86);
       box-shadow: var(--shadow);
       transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 340ms ease, border-color 340ms ease, background 340ms ease;
     }
 
-    .menu-card:hover {
+    .pizza-line.signature .pizza-card {
+      border-color: rgba(179, 32, 37, 0.34);
+      background:
+        linear-gradient(150deg, rgba(179, 32, 37, 0.1), rgba(11, 42, 91, 0.06)),
+        rgba(9, 9, 9, 0.88);
+    }
+
+    .pizza-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(11, 42, 91, 0.66);
+      border-color: rgba(11, 42, 91, 0.68);
       box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(11, 42, 91, 0.18);
     }
 
-    .menu-card.featured {
-      border-color: rgba(179, 32, 37, 0.38);
-      background:
-        linear-gradient(150deg, rgba(179, 32, 37, 0.12), rgba(11, 42, 91, 0.08)),
-        rgba(9, 9, 9, 0.9);
-    }
-
-    .menu-card.featured:hover {
-      border-color: rgba(179, 32, 37, 0.62);
+    .pizza-line.signature .pizza-card:hover {
+      border-color: rgba(179, 32, 37, 0.66);
       box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 14px 46px rgba(179, 32, 37, 0.18);
     }
 
-    .menu-card h3 {
-      margin-bottom: 14px;
-      font-family: var(--serif);
-      font-size: clamp(2.45rem, 4.8vw, 4rem);
-      font-weight: 500;
-      letter-spacing: 0.015em;
-      text-align: center;
+    .pizza-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #111;
     }
 
-    .menu-card p {
-      margin-bottom: 24px;
+    .pizza-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.32));
+      pointer-events: none;
+    }
+
+    .pizza-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+      will-change: transform;
+    }
+
+    .pizza-card:hover .pizza-media img {
+      transform: scale(1.07);
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .pizza-content {
+      padding: 22px;
+    }
+
+    .pizza-content h4 {
+      margin-bottom: 8px;
+      color: var(--cream);
+      font-size: clamp(1.5rem, 3.2vw, 2rem);
+      font-weight: 750;
+      letter-spacing: 0.025em;
+      line-height: 1.05;
+    }
+
+    .pizza-content p {
+      color: var(--cream-soft);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .pizza-video-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      margin-top: 34px;
+      border: 1px solid rgba(179, 32, 37, 0.35);
+      border-radius: var(--radius);
+      background: #080808;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46), 0 14px 46px rgba(179, 32, 37, 0.13);
+    }
+
+    .pizza-video-card video {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.86;
+      transform: scale(1.02);
+    }
+
+    .pizza-video-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.18)),
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.36));
+      pointer-events: none;
+    }
+
+    .pizza-video-caption {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      z-index: 1;
+      max-width: 300px;
+      color: var(--cream);
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 4vw, 2.7rem);
+      line-height: 1;
     }
 
     .item-list {
@@ -416,50 +524,6 @@
       height: 1px;
       flex: 0 0 auto;
       background: linear-gradient(90deg, var(--blue), transparent);
-    }
-
-    .pizza-list {
-      display: grid;
-      gap: 16px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .pizza-list li {
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(248, 234, 216, 0.1);
-      color: var(--cream-soft);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .pizza-list strong {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--cream);
-      font-size: 1.18rem;
-      font-weight: 750;
-      letter-spacing: 0.01em;
-      line-height: 1.25;
-    }
-
-    .menu-note {
-      color: var(--cream-soft);
-    }
-
-    .price {
-      display: block;
-      margin: 22px 0 12px;
-      color: var(--copper-2);
-      font-size: 1.25rem;
-      font-weight: 850;
-    }
-
-    .menu-insight {
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.65;
     }
 
     .festin-grid,
@@ -991,7 +1055,7 @@
         grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1fr);
       }
 
-      .menu-grid {
+      .pizza-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1100,41 +1164,131 @@
         <div class="container">
           <div class="section-header">
             <span class="eyebrow">Experiencias</span>
-            <h2>Dos caminos para diseñar la noche.</h2>
+            <h2>Pizzas pensadas para compartir al fuego.</h2>
           </div>
 
-          <div class="menu-grid">
-            <article class="menu-card">
+          <div class="pizza-line tradizionale">
+            <div class="pizza-line-copy">
               <h3>Tradizionale</h3>
-              <p>Las favoritas de siempre, pensadas para eventos familiares, empresas y celebraciones donde todos quieren repetir.</p>
-              <p class="menu-note">Base de salsa de tomate, queso fundido y combinaciones clásicas de alta aceptación.</p>
-              <ul class="pizza-list">
-                <li><strong>Margherita:</strong> pomodoro, tomate fresco, albahaca y aceite de oliva.</li>
-                <li><strong>Carnívora:</strong> carne, cerdo, champiñones salteados y cebolla caramelizada.</li>
-                <li><strong>Diavola:</strong> salchicha italiana, ají, mix de pimentones y choclo tostado.</li>
-                <li><strong>Veggie Lover:</strong> espinaca, tomate fresco, choclo, cebolla y pimentón.</li>
-                <li><strong>Pepperoni:</strong> pepperoni americano y queso fundido.</li>
-              </ul>
-              <span class="price">Desde $13.990 por pizza</span>
-              <p class="menu-insight">Salsa clásica, queso fundido e ingredientes familiares: una línea de mayor rendimiento, ideal para eventos masivos.</p>
-            </article>
+              <p>Clásicas italianas pensadas para compartir.</p>
+            </div>
 
-            <article class="menu-card featured">
-              <h3>Signature</h3>
-              <p>Recetas de autor con ingredientes especiales, terminaciones gourmet y sabores pensados para elevar la experiencia del evento.</p>
-              <p class="menu-note">Una línea diseñada para sorprender: ideal para eventos donde la pizza también debe generar conversación.</p>
-              <ul class="pizza-list">
-                <li><strong>Extravaganza:</strong> salchicha italiana, carne, cerdo, cebolla, pimentones asados y albahaca fresca.</li>
-                <li><strong>Mare Nero:</strong> camarones al ajillo, calamares a la pimienta, cebolla morada y aceitunas negras.</li>
-                <li><strong>Fugazza:</strong> mix de cebollas caramelizadas lentamente sobre mozzarella premium.</li>
-                <li><strong>Tartufo Nero:</strong> salsa Alfredo, champiñones trufados, rúcula fresca y aceite de trufa.</li>
-              </ul>
-              <span class="price">Desde $16.990 por pizza</span>
-              <p class="menu-insight">Quesos especiales, bases seleccionadas, mar, trufa, rúcula y salchicha italiana para elevar la percepción gastronómica del evento.</p>
-            </article>
+            <div class="pizza-grid">
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="h4Ydcs4rsxY8KAevn-300-x" alt="Pizza Margherita">
+                </div>
+                <div class="pizza-content">
+                  <h4>Margherita</h4>
+                  <p>Pomodoro, mozzarella y albahaca fresca.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="bs2psYbFd7P6mrRZd-300-x" alt="Pizza Diavola">
+                </div>
+                <div class="pizza-content">
+                  <h4>Diavola</h4>
+                  <p>Salame italiano, cebolla morada y aceitunas.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="GKmk8swxEdjQAN24G-300-x" alt="Pizza Pepperoni">
+                </div>
+                <div class="pizza-content">
+                  <h4>Pepperoni</h4>
+                  <p>Pepperoni artesanal y queso fundido.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="wMq29m4H9XDJuxER4-300-x" alt="Pizza Carnivora">
+                </div>
+                <div class="pizza-content">
+                  <h4>Carnivora</h4>
+                  <p>Jamón italiano, mozzarella y sabores intensos.</p>
+                </div>
+              </article>
+            </div>
           </div>
 
-          <p class="comparison-final">También puedes combinar ambas líneas en una experiencia mixta: pizzas clásicas para todos y opciones signature para elevar el evento.</p>
+          <div class="pizza-line signature">
+            <div class="pizza-line-copy">
+              <h3>Signature</h3>
+              <p>Combinaciones de autor para elevar la experiencia.</p>
+            </div>
+
+            <div class="pizza-grid">
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="gAYRo6DS8YvMf5zak-x-300" alt="Pizza Prosciutto">
+                </div>
+                <div class="pizza-content">
+                  <h4>Prosciutto</h4>
+                  <p>Prosciutto italiano, rúcula y pecorino.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="y4fWrweX4oHvnR2Hc-300-x" alt="Pizza Guanciale">
+                </div>
+                <div class="pizza-content">
+                  <h4>Guanciale</h4>
+                  <p>Guanciale italiano y cebolla morada caramelizada.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="JEvmhYLk959XEMwXM-x-300" alt="Pizza Fresca">
+                </div>
+                <div class="pizza-content">
+                  <h4>Fresca</h4>
+                  <p>Pesto de albahaca, tomates secos y pecorino.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="dFfo74LFahS2ejH8y-x-300" alt="Pizza Verde Napoli">
+                </div>
+                <div class="pizza-content">
+                  <h4>Verde Napoli</h4>
+                  <p>Palta, cebolla morada y mascarpone artesanal.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="5JWzWJhwtWNHoCPQu-300-x" alt="Pizza Fugazza">
+                </div>
+                <div class="pizza-content">
+                  <h4>Fugazza</h4>
+                  <p>Mix de cebollas caramelizadas y mozzarella.</p>
+                </div>
+              </article>
+
+              <article class="pizza-card">
+                <div class="pizza-media">
+                  <img src="tqXWQqchcxbgJwoj-300-x" alt="Pizza Bianca Tartufo">
+                </div>
+                <div class="pizza-content">
+                  <h4>Bianca Tartufo</h4>
+                  <p>Quesos blancos, aceite de trufa y crema suave.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="pizza-video-card" aria-label="Pizza napolitana preparada al momento">
+              <video src="buckets-prod_hhtrSBQpxq4yJ9Zor-Cuatro Quesos.mp4" autoplay muted loop playsinline></video>
+              <p class="pizza-video-caption">Pizza napolitana preparada al momento.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1350,35 +1504,6 @@
         </div>
       </section>
 
-      <!-- Comparación final -->
-      <section class="section service-choice" id="pack-o-festin">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Cómo elegir</span>
-            <h2>¿Qué opción elegir?</h2>
-          </div>
-
-          <div class="choice-grid">
-            <article class="choice-card">
-              <h3>Tavola</h3>
-              <p>Para quienes buscan una cantidad definida de pizzas y control de presupuesto.</p>
-            </article>
-
-            <article class="choice-card">
-              <h3>Experiencia Festín</h3>
-              <p>Para quienes quieren servicio continuo, sensación de abundancia y pizzas saliendo del horno durante 2 horas.</p>
-            </article>
-
-            <article class="choice-card">
-              <h3>Mixto</h3>
-              <p>Para combinar rendimiento y sorpresa: pizzas Tradizionale para todos y opciones Signature para elevar el evento.</p>
-            </article>
-          </div>
-
-          <p class="comparison-final">Si no estás seguro, cuéntanos tu evento y te recomendamos la opción más conveniente.</p>
-        </div>
-      </section>
-
       <!-- Contacto -->
       <section class="section contact" id="contacto">
         <div class="container">
@@ -1421,7 +1546,7 @@
 
   <script>
     const revealTargets = document.querySelectorAll(
-      ".section-header, .menu-card, .pack-card, .festin-card, .choice-card, .quote-form, .quote-copy, .chef-photo, .chef-card, .contact-card"
+      ".section-header, .pizza-line-copy, .pizza-card, .pizza-video-card, .pack-card, .festin-card, .quote-form, .quote-copy, .chef-photo, .chef-card, .contact-card"
     );
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
