@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Festín Nápoles | Pizza napolitana en vivo para eventos</title>
   <meta name="description" content="Catering premium de pizza napolitana a domicilio para matrimonios, cumpleaños, empresas y eventos privados. Horno instalado, pizzaiolo profesional y pizzas al momento.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
   <meta name="theme-color" content="#070707">
   <meta property="og:title" content="Festín Nápoles | Catering premium de pizza napolitana">
   <meta property="og:description" content="Pizza napolitana en vivo con horno instalado en tu celebración. Una experiencia gastronómica premium para eventos inolvidables.">
@@ -15,14 +17,16 @@
     :root {
       color-scheme: dark;
       --bg: #070707;
-      --graphite: #10100f;
-      --graphite-2: #171311;
-      --cream: #f8ead8;
-      --cream-soft: #d8c4ae;
-      --muted: #a99784;
-      --copper: #c47a3c;
-      --copper-2: #f0a15f;
-      --napoli: #a82118;
+      --graphite: #0b0b0c;
+      --graphite-2: #121215;
+      --cream: #f3ebdd;
+      --cream-soft: #d7cabb;
+      --muted: #a89b8d;
+      --blue: #0b2a5b;
+      --red: #b32025;
+      --copper: #8d6844;
+      --copper-2: var(--red);
+      --napoli: var(--red);
       --line: rgba(248, 234, 216, 0.14);
       --glass: rgba(10, 10, 10, 0.66);
       --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
@@ -45,9 +49,9 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 75% 10%, rgba(168, 33, 24, 0.24), transparent 32rem),
-        radial-gradient(circle at 18% 22%, rgba(196, 122, 60, 0.16), transparent 28rem),
-        linear-gradient(180deg, #050505 0%, #11100f 48%, #070707 100%);
+        radial-gradient(circle at 75% 10%, rgba(179, 32, 37, 0.18), transparent 32rem),
+        radial-gradient(circle at 18% 22%, rgba(11, 42, 91, 0.25), transparent 28rem),
+        linear-gradient(180deg, #050505 0%, #0b0b0c 48%, #070707 100%);
       color: var(--cream);
       font-family: var(--sans);
       letter-spacing: 0;
@@ -169,17 +173,18 @@
       padding: 0 24px;
       border: 0;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--copper-2), var(--napoli));
-      color: #1b0a05;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--red) 100%);
+      color: var(--cream);
       cursor: pointer;
       font-weight: 850;
-      box-shadow: 0 18px 44px rgba(168, 33, 24, 0.3);
+      box-shadow: 0 18px 44px rgba(11, 42, 91, 0.25), 0 8px 28px rgba(179, 32, 37, 0.18);
       transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 24px 54px rgba(168, 33, 24, 0.36);
+      filter: brightness(1.08);
+      box-shadow: 0 24px 58px rgba(11, 42, 91, 0.34), 0 12px 34px rgba(179, 32, 37, 0.24);
     }
 
     /* Header */
@@ -199,10 +204,9 @@
     }
 
     .logo {
-      width: 64px;
-      height: 64px;
+      width: 82px;
+      height: 82px;
       object-fit: contain;
-      border-radius: 50%;
       filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.48));
     }
 
@@ -243,8 +247,8 @@
         linear-gradient(90deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.34) 52%, rgba(0, 0, 0, 0.72)),
         linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.92)),
         var(--hero-image) center / cover no-repeat,
-        radial-gradient(circle at 70% 32%, rgba(196, 122, 60, 0.24), transparent 24rem),
-        linear-gradient(135deg, #1a1110, #050505);
+        radial-gradient(circle at 70% 32%, rgba(11, 42, 91, 0.25), transparent 24rem),
+        linear-gradient(135deg, #101015, #050505);
     }
 
     .hero::after {
@@ -318,7 +322,7 @@
     .festin {
       background:
         linear-gradient(180deg, #0f0d0c, #090909),
-        radial-gradient(circle at 78% 28%, rgba(196, 122, 60, 0.16), transparent 28rem);
+        radial-gradient(circle at 78% 28%, rgba(11, 42, 91, 0.2), transparent 28rem);
     }
 
     .menu-grid {
@@ -328,26 +332,28 @@
 
     .menu-card {
       padding: 26px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(11, 42, 91, 0.42);
       border-radius: var(--radius);
       background:
-        linear-gradient(150deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
+        linear-gradient(150deg, rgba(11, 42, 91, 0.11), rgba(255, 255, 255, 0.018)),
         rgba(9, 9, 9, 0.82);
       box-shadow: var(--shadow);
     }
 
     .menu-card.featured {
-      border-color: rgba(240, 161, 95, 0.32);
+      border-color: rgba(179, 32, 37, 0.38);
       background:
-        linear-gradient(150deg, rgba(196, 122, 60, 0.14), rgba(168, 33, 24, 0.08)),
+        linear-gradient(150deg, rgba(179, 32, 37, 0.12), rgba(11, 42, 91, 0.08)),
         rgba(9, 9, 9, 0.9);
     }
 
     .menu-card h3 {
-      margin-bottom: 8px;
+      margin-bottom: 14px;
       font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-size: clamp(2.45rem, 4.8vw, 4rem);
       font-weight: 500;
+      letter-spacing: 0.015em;
+      text-align: center;
     }
 
     .menu-card p {
@@ -378,7 +384,7 @@
       width: 42px;
       height: 1px;
       flex: 0 0 auto;
-      background: linear-gradient(90deg, var(--copper), transparent);
+      background: linear-gradient(90deg, var(--blue), transparent);
     }
 
     .pizza-list {
@@ -393,11 +399,18 @@
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(248, 234, 216, 0.1);
       color: var(--cream-soft);
-      line-height: 1.55;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .pizza-list strong {
+      display: block;
+      margin-bottom: 5px;
       color: var(--cream);
+      font-size: 1.18rem;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+      line-height: 1.25;
     }
 
     .menu-note {
@@ -438,9 +451,9 @@
     }
 
     .festin-card.featured {
-      border-color: rgba(240, 161, 95, 0.34);
+      border-color: rgba(179, 32, 37, 0.34);
       background:
-        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        linear-gradient(160deg, rgba(11, 42, 91, 0.16), rgba(179, 32, 37, 0.08)),
         rgba(9, 9, 9, 0.9);
     }
 
@@ -454,7 +467,7 @@
     .contact {
       background:
         linear-gradient(180deg, #080808, #050505),
-        radial-gradient(circle at 22% 20%, rgba(196, 122, 60, 0.1), transparent 26rem);
+        radial-gradient(circle at 22% 20%, rgba(11, 42, 91, 0.18), transparent 26rem);
     }
 
     .contact-grid {
@@ -477,16 +490,16 @@
 
     .contact-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(240, 161, 95, 0.36);
+      border-color: rgba(11, 42, 91, 0.5);
       background:
-        linear-gradient(150deg, rgba(196, 122, 60, 0.1), rgba(255, 255, 255, 0.02)),
+        linear-gradient(150deg, rgba(11, 42, 91, 0.13), rgba(255, 255, 255, 0.02)),
         rgba(9, 9, 9, 0.9);
     }
 
     .contact-card.featured {
-      border-color: rgba(240, 161, 95, 0.34);
+      border-color: rgba(179, 32, 37, 0.38);
       background:
-        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        linear-gradient(160deg, rgba(11, 42, 91, 0.14), rgba(179, 32, 37, 0.12)),
         rgba(9, 9, 9, 0.9);
     }
 
@@ -506,9 +519,9 @@
 
     .festin-card.wide {
       width: min(100%, 1040px);
-      border-color: rgba(240, 161, 95, 0.34);
+      border-color: rgba(11, 42, 91, 0.42);
       background:
-        linear-gradient(160deg, rgba(196, 122, 60, 0.14), rgba(168, 33, 24, 0.07)),
+        linear-gradient(160deg, rgba(11, 42, 91, 0.18), rgba(179, 32, 37, 0.12)),
         rgba(9, 9, 9, 0.9);
     }
 
@@ -549,13 +562,13 @@
     .packs {
       background:
         linear-gradient(180deg, #090909, #0d0b0a),
-        radial-gradient(circle at 22% 28%, rgba(196, 122, 60, 0.12), transparent 28rem);
+        radial-gradient(circle at 22% 28%, rgba(11, 42, 91, 0.18), transparent 28rem);
     }
 
     .service-choice {
       background:
         linear-gradient(180deg, #0d0b0a, #080808),
-        radial-gradient(circle at 74% 35%, rgba(168, 33, 24, 0.14), transparent 30rem);
+        radial-gradient(circle at 74% 35%, rgba(179, 32, 37, 0.14), transparent 30rem);
     }
 
     .pack-grid {
@@ -576,9 +589,9 @@
     }
 
     .pack-card.highlight {
-      border-color: rgba(240, 161, 95, 0.34);
+      border-color: rgba(11, 42, 91, 0.42);
       background:
-        linear-gradient(160deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        linear-gradient(160deg, rgba(11, 42, 91, 0.16), rgba(179, 32, 37, 0.08)),
         rgba(9, 9, 9, 0.9);
     }
 
@@ -678,8 +691,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--copper-2);
-      box-shadow: 0 0 18px rgba(240, 161, 95, 0.45);
+      background: var(--red);
+      box-shadow: 0 0 18px rgba(179, 32, 37, 0.36);
     }
 
     .comparison-final {
@@ -745,10 +758,10 @@
       display: grid;
       gap: 10px;
       padding: 20px;
-      border: 1px solid rgba(240, 161, 95, 0.3);
+      border: 1px solid rgba(11, 42, 91, 0.46);
       border-radius: var(--radius);
       background:
-        linear-gradient(145deg, rgba(196, 122, 60, 0.16), rgba(168, 33, 24, 0.08)),
+        linear-gradient(145deg, rgba(11, 42, 91, 0.18), rgba(179, 32, 37, 0.1)),
         rgba(0, 0, 0, 0.22);
     }
 
@@ -808,7 +821,7 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: rgba(240, 161, 95, 0.78);
+      border-color: rgba(179, 32, 37, 0.72);
       background: rgba(255, 255, 255, 0.082);
     }
 
@@ -843,9 +856,9 @@
     .suggestion {
       margin-top: 14px;
       padding: 14px 16px;
-      border: 1px solid rgba(240, 161, 95, 0.22);
+      border: 1px solid rgba(11, 42, 91, 0.38);
       border-radius: 6px;
-      background: rgba(196, 122, 60, 0.08);
+      background: rgba(11, 42, 91, 0.12);
       color: var(--cream);
       font-size: 0.92rem;
       line-height: 1.5;
@@ -1027,19 +1040,19 @@
       <section class="section packs" id="packs">
         <div class="container">
           <div class="section-header">
-            <span class="eyebrow">Packs para eventos</span>
+            <span class="eyebrow">Tavola</span>
             <h2>Formatos claros para que la experiencia fluya.</h2>
             <p>Elige una base según el tamaño de tu celebración. Desde ahí ajustamos comuna, horarios, experiencia de pizzas y requerimientos especiales.</p>
           </div>
 
           <div class="pack-grid">
             <article class="pack-card">
-              <h3>Pack 15 pizzas</h3>
+              <h3>Tavola 30</h3>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
-                <strong>Hasta 30 personas aprox.</strong>
+                <strong>Hasta 30 invitados</strong>
               </div>
-              <div class="pack-pricing" aria-label="Valores estimados Pack 15 pizzas">
+              <div class="pack-pricing" aria-label="Valores estimados Tavola 30">
                 <div class="pack-price-row">
                   <span>Tradizionale</span>
                   <strong>15 Tradizionale x $13.990 = $209.850</strong>
@@ -1056,12 +1069,12 @@
             </article>
 
             <article class="pack-card highlight">
-              <h3>Pack 20 pizzas</h3>
+              <h3>Tavola 40</h3>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
-                <strong>Hasta 40 personas aprox.</strong>
+                <strong>Hasta 40 invitados</strong>
               </div>
-              <div class="pack-pricing" aria-label="Valores estimados Pack 20 pizzas">
+              <div class="pack-pricing" aria-label="Valores estimados Tavola 40">
                 <div class="pack-price-row">
                   <span>Tradizionale</span>
                   <strong>20 Tradizionale x $13.990 = $279.800</strong>
@@ -1078,12 +1091,12 @@
             </article>
 
             <article class="pack-card">
-              <h3>Pack 30 pizzas</h3>
+              <h3>Tavola 60</h3>
               <div class="capacity">
                 <span>Capacidad sugerida</span>
-                <strong>Hasta 60 personas aprox.</strong>
+                <strong>Hasta 60 invitados</strong>
               </div>
-              <div class="pack-pricing" aria-label="Valores estimados Pack 30 pizzas">
+              <div class="pack-pricing" aria-label="Valores estimados Tavola 60">
                 <div class="pack-price-row">
                   <span>Tradizionale</span>
                   <strong>30 Tradizionale x $13.990 = $419.700</strong>
@@ -1100,7 +1113,7 @@
             </article>
           </div>
 
-          <p class="pack-note">Todos los packs incluyen montaje de estación, horno instalado en el evento, pizzaiolo en vivo y pizzas preparadas al momento.</p>
+          <p class="pack-note">Todas las Tavola incluyen montaje de estación, horno instalado en el evento, pizzaiolo en vivo y pizzas preparadas al momento.</p>
         </div>
       </section>
 
@@ -1165,7 +1178,7 @@
                   Tipo de servicio
                   <select id="servicioInput" name="servicio" required>
                     <option value="">Seleccionar</option>
-                    <option>Pack cerrado</option>
+                    <option>Tavola</option>
                     <option>Experiencia Festín 2 horas</option>
                   </select>
                 </label>
@@ -1245,7 +1258,7 @@
 
           <div class="choice-grid">
             <article class="choice-card">
-              <h3>Pack cerrado</h3>
+              <h3>Tavola</h3>
               <p>Para quienes buscan una cantidad definida de pizzas y control de presupuesto.</p>
             </article>
 
@@ -1411,7 +1424,7 @@
         `Pizzas sugeridas: ${estimate.pizzas || "Por definir"}`,
         `Experiencia de pizzas: ${data.get("linea")}`,
         `Comuna: ${data.get("comuna")}`,
-        `${data.get("servicio") === "Experiencia Festín 2 horas" ? "Precio referencial Experiencia Festín" : "Precio estimado"}: ${estimate.totalLabel}`,
+        `${data.get("servicio") === "Experiencia Festín 2 horas" ? "Precio referencial Experiencia Festín" : "Precio estimado Tavola"}: ${estimate.totalLabel}`,
         `Nombre: ${data.get("nombre")}`,
         `Fecha: ${data.get("fecha")}`,
         `Tipo de evento: ${data.get("evento")}`,
