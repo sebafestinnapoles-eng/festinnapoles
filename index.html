@@ -972,6 +972,14 @@
       font-size: 0.82rem;
     }
 
+    .form-note.is-success {
+      color: var(--cream);
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+    }
+
     .field-hint {
       color: var(--muted);
       font-size: 0.78rem;
@@ -1708,6 +1716,8 @@
 
       const data = new FormData(form);
       const estimate = getEstimate();
+      reservationStatus.classList.remove("is-success");
+
       if (!estimate.ready) {
         reservationStatus.textContent = "Completa tipo de servicio, personas y experiencia antes de reservar.";
         return;
@@ -1755,8 +1765,10 @@
 
         form.reset();
         updateEstimate();
-        reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles.";
+        reservationStatus.classList.add("is-success");
+        reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles. Gracias!";
       } catch (error) {
+        reservationStatus.classList.remove("is-success");
         reservationStatus.textContent = "No pudimos guardar la reserva. Intenta nuevamente o escríbenos por WhatsApp.";
         console.error("Error al guardar reserva en Supabase:", error);
       } finally {
