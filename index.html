@@ -192,6 +192,13 @@
       transform: translateY(-1px) scale(0.98);
     }
 
+    .button:disabled {
+      cursor: wait;
+      filter: grayscale(0.2) brightness(0.75);
+      opacity: 0.78;
+      transform: none;
+    }
+
     .button:focus-visible,
     a:focus-visible,
     input:focus-visible,
@@ -1525,9 +1532,9 @@
                   Comentarios especiales
                   <textarea name="comentarios" placeholder="Cuéntanos si tienes horarios, restricciones, lugar del evento o alguna idea especial."></textarea>
                 </label>
-                <button class="button" type="submit">Enviar cotización por WhatsApp</button>
+                <button class="button" id="reserveButton" type="submit">Reservar/Prenotare</button>
               </div>
-              <p class="form-note">El envío abre WhatsApp con tu solicitud lista para compartir.</p>
+              <p class="form-note" id="reservationStatus" aria-live="polite">Guardaremos tu solicitud para preparar la propuesta de tu evento.</p>
             </div>
           </form>
         </div>
@@ -1543,9 +1550,9 @@
           </div>
 
           <div class="contact-grid" aria-label="Canales de contacto">
-            <a class="contact-card featured" href="https://wa.me/56932458647" target="_blank" rel="noopener noreferrer">
+            <a class="contact-card featured" href="https://wa.me/56988455230" target="_blank" rel="noopener noreferrer">
               <span>WhatsApp</span>
-              <strong>+56 9 3245 8647</strong>
+              <strong>+56 9 8845 5230</strong>
             </a>
             <a class="contact-card" href="mailto:festinnapoles@gmail.com">
               <span>Mail</span>
@@ -1601,6 +1608,8 @@
     const PRICE_TRADIZIONALE = 13990;
     const PRICE_SIGNATURE = 16990;
     const PRICE_FESTIN_PERSON = 9990;
+    const SUPABASE_URL = "https://dpjyakzdobjmpkerhkik.supabase.co/rest/v1/reservas";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwanlha3pkb2JqbXBrZXJoa2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDA4MDMsImV4cCI6MjA5NTg3NjgwM30.IVlRkWTlfVNqn9l1POy9F_yVpFpjWrhoFU_zLKOH_vs";
 
     const form = document.querySelector("#quoteForm");
     const servicioInput = document.querySelector("#servicioInput");
@@ -1609,6 +1618,8 @@
     const comunaInput = document.querySelector("#comunaInput");
     const estimateTotal = document.querySelector("#estimateTotal");
     const estimateDetail = document.querySelector("#estimateDetail");
+    const reserveButton = document.querySelector("#reserveButton");
+    const reservationStatus = document.querySelector("#reservationStatus");
 
     const currency = new Intl.NumberFormat("es-CL", {
       style: "currency",
@@ -1692,27 +1703,66 @@
     });
     updateEstimate();
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const data = new FormData(form);
       const estimate = getEstimate();
-      const message = [
-        "Hola Festín Nápoles, quiero solicitar una cotización.",
-        `Tipo de servicio: ${data.get("servicio")}`,
-        `Personas: ${data.get("personas")}`,
-        `Pizzas sugeridas: ${estimate.pizzas || "Por definir"}`,
-        `Experiencia de pizzas: ${data.get("linea")}`,
-        `Comuna: ${data.get("comuna")}`,
-        `${data.get("servicio") === "Experiencia Festín 2 horas" ? "Precio referencial Experiencia Festín" : "Precio estimado Tavola"}: ${estimate.totalLabel}`,
-        `Nombre: ${data.get("nombre")}`,
-        `Fecha: ${data.get("fecha")}`,
-        `Tipo de evento: ${data.get("evento")}`,
-        `WhatsApp: ${data.get("whatsapp")}`,
-        `Comentarios: ${data.get("comentarios") || "Sin comentarios"}`
-      ].join("\n");
+      if (!estimate.ready) {
+        reservationStatus.textContent = "Completa tipo de servicio, personas y experiencia antes de reservar.";
+        return;
+      }
 
-      window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      const payload = {
+        nombre: String(data.get("nombre") || "").trim(),
+        fecha_evento: data.get("fecha"),
+        tipo_evento: data.get("evento"),
+        whatsapp: String(data.get("whatsapp") || "").trim(),
+        comuna: String(data.get("comuna") || "").trim(),
+        tipo_servicio: data.get("servicio"),
+        experiencia_pizzas: data.get("linea"),
+        personas: Number(data.get("personas") || 0),
+        pizzas_sugeridas: estimate.pizzas || 0,
+        composicion: estimate.composition || "",
+        precio_estimado: estimate.total,
+        precio_estimado_texto: estimate.totalLabel,
+        detalle_estimacion: estimate.detail,
+        comentarios: String(data.get("comentarios") || "").trim(),
+        estado: "nueva",
+        origen: "landing"
+      };
+
+      reserveButton.disabled = true;
+      reserveButton.textContent = "Reservando...";
+      reservationStatus.textContent = "Estamos guardando tu solicitud.";
+
+      try {
+        const response = await fetch(SUPABASE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText || "No se pudo guardar la reserva.");
+        }
+
+        form.reset();
+        updateEstimate();
+        reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles.";
+      } catch (error) {
+        reservationStatus.textContent = "No pudimos guardar la reserva. Intenta nuevamente o escríbenos por WhatsApp.";
+        console.error("Error al guardar reserva en Supabase:", error);
+      } finally {
+        reserveButton.disabled = false;
+        reserveButton.textContent = "Reservar/Prenotare";
+      }
     });
   </script>
 </body>
