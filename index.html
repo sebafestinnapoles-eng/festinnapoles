@@ -1558,9 +1558,9 @@
           </div>
 
           <div class="contact-grid" aria-label="Canales de contacto">
-            <a class="contact-card featured" href="https://wa.me/56988455230" target="_blank" rel="noopener noreferrer">
+            <a class="contact-card featured" href="https://wa.me/56988455230?text=Hola%20Sebasti%C3%A1n%2C%20me%20interesa%20Fest%C3%ADn%20N%C3%A1poles%20para%20un%20evento.%20www.festinnapoles.cl" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con mensaje para Festín Nápoles">
               <span>WhatsApp</span>
-              <strong>+56 9 8845 5230</strong>
+              <strong>Enviar mensaje</strong>
             </a>
             <a class="contact-card" href="mailto:festinnapoles@gmail.com">
               <span>Mail</span>
@@ -1617,8 +1617,7 @@
     const PRICE_TRADIZIONALE = 13990;
     const PRICE_SIGNATURE = 16990;
     const PRICE_FESTIN_PERSON = 9990;
-    const SUPABASE_URL = "https://dpjyakzdobjmpkerhkik.supabase.co/rest/v1/reservas";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwanlha3pkb2JqbXBrZXJoa2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDA4MDMsImV4cCI6MjA5NTg3NjgwM30.IVlRkWTlfVNqn9l1POy9F_yVpFpjWrhoFU_zLKOH_vs";
+    const RESERVATION_ENDPOINT = "/api/reservar";
 
     const form = document.querySelector("#quoteForm");
     const servicioInput = document.querySelector("#servicioInput");
@@ -1748,13 +1747,10 @@
       reservationStatus.textContent = "Estamos guardando tu solicitud.";
 
       try {
-        const response = await fetch(SUPABASE_URL, {
+        const response = await fetch(RESERVATION_ENDPOINT, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_ANON_KEY,
-            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-            "Prefer": "return=minimal"
+            "Content-Type": "application/json"
           },
           body: JSON.stringify(payload)
         });
@@ -1780,6 +1776,4 @@
   </script>
 </body>
 </html>
-
-
 
