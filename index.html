@@ -972,14 +972,30 @@
       font-size: 0.82rem;
     }
 
-    .form-note.is-success {
-      color: var(--cream);
-      font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.35;
-      text-align: center;
+    .quote-form.is-sent {
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      border-color: rgba(179, 32, 37, 0.42);
+      background:
+        linear-gradient(150deg, rgba(11, 42, 91, 0.18), rgba(179, 32, 37, 0.14)),
+        rgba(7, 7, 7, 0.88);
     }
 
+    .quote-form.is-sent .quote-step {
+      display: none;
+    }
+
+    .form-note.is-success {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      color: var(--cream);
+      font-size: clamp(1.75rem, 4vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      text-align: center;
+      text-wrap: balance;
+    }
     .field-hint {
       color: var(--muted);
       font-size: 0.78rem;
@@ -1542,8 +1558,8 @@
                 </label>
                 <button class="button" id="reserveButton" type="submit">Reservar/Prenotare</button>
               </div>
-              <p class="form-note" id="reservationStatus" aria-live="polite">Enviaremos tu solicitud para preparar la propuesta de tu evento.</p>
             </div>
+            <p class="form-note" id="reservationStatus" aria-live="polite">Enviaremos tu solicitud para preparar la propuesta de tu evento.</p>
           </form>
         </div>
       </section>
@@ -1562,17 +1578,21 @@
               <span>WhatsApp</span>
               <strong>Enviar mensaje</strong>
             </a>
-            <a class="contact-card" href="mailto:festinnapoles@gmail.com">
+            <a class="contact-card" href="mailto:seba.festinnapoles@gmail.com">
               <span>Mail</span>
-              <strong>festinnapoles@gmail.com</strong>
+              <strong>seba.festinnapoles@gmail.com</strong>
             </a>
-            <a class="contact-card" href="https://instagram.com/festinnapoles" target="_blank" rel="noopener noreferrer">
+            <a class="contact-card" href="https://instagram.com/festin.napoles" target="_blank" rel="noopener noreferrer">
               <span>Instagram</span>
-              <strong>@festinnapoles</strong>
+              <strong>@festin.napoles</strong>
             </a>
             <a class="contact-card" href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
               <span>Facebook</span>
               <strong>Festín Nápoles</strong>
+            </a>
+            <a class="contact-card" href="noticias/">
+              <span>Noticias</span>
+              <strong>Guías para eventos</strong>
             </a>
           </div>
         </div>
@@ -1716,6 +1736,7 @@
 
       const data = new FormData(form);
       const estimate = getEstimate();
+      form.classList.remove("is-sent");
       reservationStatus.classList.remove("is-success");
 
       if (!estimate.ready) {
@@ -1762,9 +1783,11 @@
 
         form.reset();
         updateEstimate();
+        form.classList.add("is-sent");
         reservationStatus.classList.add("is-success");
         reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles. Gracias!";
       } catch (error) {
+        form.classList.remove("is-sent");
         reservationStatus.classList.remove("is-success");
         reservationStatus.textContent = "No pudimos enviar la reserva. Intenta nuevamente o escríbenos por WhatsApp.";
         console.error("Error al enviar reserva por correo:", error);
