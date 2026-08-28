@@ -23,6 +23,8 @@ function buildReservationEmail(payload) {
     ["Tipo de evento", payload.tipo_evento],
     ["WhatsApp", payload.whatsapp],
     ["Comuna", payload.comuna],
+    ["Horario estimado", payload.horario || "No indicado"],
+    ["Lugar del evento", payload.lugar || "No indicado"],
     ["Tipo de servicio", payload.tipo_servicio],
     ["Experiencia de pizzas", payload.experiencia_pizzas],
     ["Personas", payload.personas],

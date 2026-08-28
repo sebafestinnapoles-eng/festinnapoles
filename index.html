@@ -5,14 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Festín Nápoles | Pizza napolitana en vivo para eventos</title>
   <meta name="description" content="Catering premium de pizza napolitana a domicilio para matrimonios, cumpleaños, empresas y eventos privados. Horno instalado, pizzaiolo profesional y pizzas al momento.">
+  <link rel="canonical" href="https://www.festinnapoles.cl/">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon-192.png">
   <meta name="theme-color" content="#070707">
   <meta property="og:title" content="Festín Nápoles | Catering premium de pizza napolitana">
   <meta property="og:description" content="Pizza napolitana en vivo con horno instalado en tu celebración. Una experiencia gastronómica premium para eventos inolvidables.">
   <meta property="og:image" content="ChatGPT Image 25 may 2026, 21_32_23.png">
   <meta property="og:type" content="website">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Festín Nápoles",
+    "url": "https://www.festinnapoles.cl/",
+    "logo": "https://www.festinnapoles.cl/WhatsApp%20Image%202026-05-11%20at%2012.38.51%20-%20Editado.png",
+    "image": "https://www.festinnapoles.cl/ChatGPT%20Image%2025%20may%202026%2C%2021_32_23.png",
+    "email": "seba.festinnapoles@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+    "areaServed": ["Santiago", "Las Condes", "Vitacura", "Lo Barnechea", "Providencia", "Ñuñoa"],
+    "servesCuisine": "Pizza napolitana",
+    "priceRange": "$$$",
+    "sameAs": ["https://instagram.com/festin.napoles"],
+    "makesOffer": [
+      { "@type": "Offer", "name": "Tavola", "description": "Packs cerrados de pizza napolitana para eventos." },
+      { "@type": "Offer", "name": "Experiencia Festín", "description": "Pizza napolitana libre durante 2 horas con horno instalado y pizzaiolo en vivo." }
+    ]
+  }
+  </script>
   <style>
     :root {
       color-scheme: dark;
@@ -1552,6 +1575,14 @@
                   WhatsApp
                   <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
                 </label>
+                <label>
+                  Horario estimado
+                  <input name="horario" placeholder="Ej: 20:00 hrs">
+                </label>
+                <label>
+                  Lugar del evento
+                  <input name="lugar" placeholder="Casa, parcela, empresa o salón">
+                </label>
                 <label class="full">
                   Comentarios especiales
                   <textarea name="comentarios" placeholder="Cuéntanos si tienes horarios, restricciones, lugar del evento o alguna idea especial."></textarea>
@@ -1593,6 +1624,18 @@
             <a class="contact-card" href="noticias/">
               <span>Noticias</span>
               <strong>Guías para eventos</strong>
+            </a>
+            <a class="contact-card" href="comunas/">
+              <span>Comunas</span>
+              <strong>Zonas de servicio</strong>
+            </a>
+            <a class="contact-card" href="eventos/">
+              <span>Eventos</span>
+              <strong>Formatos por celebración</strong>
+            </a>
+            <a class="contact-card" href="dossier/">
+              <span>Dossier</span>
+              <strong>Presentación comercial</strong>
             </a>
           </div>
         </div>
@@ -1758,6 +1801,8 @@
         precio_estimado: estimate.total,
         precio_estimado_texto: estimate.totalLabel,
         detalle_estimacion: estimate.detail,
+        horario: String(data.get("horario") || "").trim(),
+        lugar: String(data.get("lugar") || "").trim(),
         comentarios: String(data.get("comentarios") || "").trim(),
         estado: "nueva",
         origen: "landing"
@@ -1799,4 +1844,3 @@
   </script>
 </body>
 </html>
-
