@@ -1542,7 +1542,7 @@
                 </label>
                 <button class="button" id="reserveButton" type="submit">Reservar/Prenotare</button>
               </div>
-              <p class="form-note" id="reservationStatus" aria-live="polite">Guardaremos tu solicitud para preparar la propuesta de tu evento.</p>
+              <p class="form-note" id="reservationStatus" aria-live="polite">Enviaremos tu solicitud para preparar la propuesta de tu evento.</p>
             </div>
           </form>
         </div>
@@ -1744,7 +1744,7 @@
 
       reserveButton.disabled = true;
       reserveButton.textContent = "Reservando...";
-      reservationStatus.textContent = "Estamos guardando tu solicitud.";
+      reservationStatus.textContent = "Estamos enviando tu solicitud.";
 
       try {
         const response = await fetch(RESERVATION_ENDPOINT, {
@@ -1757,7 +1757,7 @@
 
         if (!response.ok) {
           const errorText = await response.text();
-          throw new Error(errorText || "No se pudo guardar la reserva.");
+          throw new Error(errorText || "No se pudo enviar la reserva.");
         }
 
         form.reset();
@@ -1766,8 +1766,8 @@
         reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles. Gracias!";
       } catch (error) {
         reservationStatus.classList.remove("is-success");
-        reservationStatus.textContent = "No pudimos guardar la reserva. Intenta nuevamente o escríbenos por WhatsApp.";
-        console.error("Error al guardar reserva en Supabase:", error);
+        reservationStatus.textContent = "No pudimos enviar la reserva. Intenta nuevamente o escríbenos por WhatsApp.";
+        console.error("Error al enviar reserva por correo:", error);
       } finally {
         reserveButton.disabled = false;
         reserveButton.textContent = "Reservar/Prenotare";
