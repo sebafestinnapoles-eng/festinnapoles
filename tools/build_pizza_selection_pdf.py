@@ -24,21 +24,21 @@ LINE = colors.HexColor("#2a2a2a")
 
 
 TRADIZIONALE = [
-    ("Margherita", "Pomodoro, mozzarella y albahaca fresca.", "6qpETtMBbKpQRhLDr-300-x.webp"),
-    ("Diavola", "Salame italiano, cebolla morada y aceitunas.", "bs2psYbFd7P6mrRZd-300-x.webp"),
-    ("Pepperoni", "Pepperoni artesanal y queso fundido.", "GKmk8swxEdjQAN24G-300-x.webp"),
-    ("Carnivora", "Jamon italiano, mozzarella y sabores intensos.", "wMq29m4H9XDJuxER4-300-x.webp"),
+    ("Margherita", "Pomodoro, mozzarella fior di latte, albahaca fresca y aceite de oliva.", "6qpETtMBbKpQRhLDr-300-x.webp"),
+    ("Diavola", "Pomodoro, mozzarella, salame italiano picante, cebolla morada y aceitunas.", "bs2psYbFd7P6mrRZd-300-x.webp"),
+    ("Pepperoni", "Pomodoro, mozzarella, pepperoni artesanal y oregano.", "GKmk8swxEdjQAN24G-300-x.webp"),
+    ("Carnivora", "Pomodoro, mozzarella, jamon italiano, pepperoni y salame.", "wMq29m4H9XDJuxER4-300-x.webp"),
     ("Napoletana", "Pomodoro, mozzarella, tomate fresco, oregano y aceite de oliva.", "pizza-napoletana.webp"),
     ("Vegetariana / Ortolana", "Mozzarella, champinones, pimenton asado, cebolla morada y aceitunas.", "pizza-vegetariana-ortolana.webp"),
+    ("Fugazza", "Mozzarella, mix de cebollas caramelizadas, oregano y aceite de oliva.", "5JWzWJhwtWNHoCPQu-300-x.webp"),
 ]
 
 SIGNATURE = [
-    ("Prosciutto", "Prosciutto italiano, rucula y pecorino.", "gAYRo6DS8YvMf5zak-x-300.webp"),
-    ("Guanciale", "Guanciale italiano y cebolla morada caramelizada.", "y4fWrweX4oHvnR2Hc-300-x.webp"),
-    ("Fresca", "Pesto de albahaca, tomates secos y pecorino.", "JEvmhYLk959XEMwXM-x-300.webp"),
-    ("Verde Napoli", "Palta, cebolla morada y mascarpone artesanal.", "dFfo74LFahS2ejH8y-x-300.webp"),
-    ("Fugazza", "Mix de cebollas caramelizadas y mozzarella.", "5JWzWJhwtWNHoCPQu-300-x.webp"),
-    ("Bianca Tartufo", "Quesos blancos, aceite de trufa y crema suave.", "tqXWQWqchcxbgJwoj-300-x.webp"),
+    ("Prosciutto", "Pomodoro, mozzarella, prosciutto italiano, rucula, pecorino y aceite de oliva.", "gAYRo6DS8YvMf5zak-x-300.webp"),
+    ("Guanciale", "Pomodoro, mozzarella, guanciale italiano, cebolla morada caramelizada y pecorino.", "y4fWrweX4oHvnR2Hc-300-x.webp"),
+    ("Fresca", "Pesto de albahaca, mozzarella, tomates secos, albahaca fresca y pecorino.", "JEvmhYLk959XEMwXM-x-300.webp"),
+    ("Verde Napoli", "Mozzarella, palta, cebolla morada, mascarpone artesanal y semillas.", "dFfo74LFahS2ejH8y-x-300.webp"),
+    ("Bianca Tartufo", "Mozzarella, quesos blancos, crema suave, aceite de trufa y oregano.", "tqXWQWqchcxbgJwoj-300-x.webp"),
 ]
 
 
@@ -48,8 +48,8 @@ STYLES = {
     "h2": ParagraphStyle("h2", fontName="Times-Roman", fontSize=30, leading=32, textColor=CREAM, spaceAfter=7),
     "lead": ParagraphStyle("lead", fontName="Helvetica", fontSize=12, leading=18, textColor=CREAM_SOFT, spaceAfter=16),
     "small": ParagraphStyle("small", fontName="Helvetica", fontSize=9, leading=13, textColor=MUTED),
-    "card_title": ParagraphStyle("card_title", fontName="Times-Bold", fontSize=16, leading=18, textColor=CREAM, spaceAfter=3),
-    "card_text": ParagraphStyle("card_text", fontName="Helvetica", fontSize=8.5, leading=12, textColor=CREAM_SOFT),
+    "card_title": ParagraphStyle("card_title", fontName="Times-Bold", fontSize=13.5, leading=15, textColor=CREAM, spaceAfter=2),
+    "card_text": ParagraphStyle("card_text", fontName="Helvetica", fontSize=7.3, leading=9.6, textColor=CREAM_SOFT),
 }
 
 
@@ -88,14 +88,14 @@ def on_page(canvas, doc):
 
 def pizza_card(item):
     name, description, image_name = item
-    image_size = 5.25 * cm
+    image_size = 3.75 * cm
     table = Table(
         [
             [Image(str(ROOT / image_name), width=image_size, height=image_size)],
             [Paragraph(name, STYLES["card_title"])],
             [Paragraph(description, STYLES["card_text"])],
         ],
-        colWidths=[7.8 * cm],
+        colWidths=[5.15 * cm],
         rowHeights=[image_size, None, None],
     )
     table.setStyle(
@@ -103,11 +103,10 @@ def pizza_card(item):
             [
                 ("BACKGROUND", (0, 0), (-1, -1), GRAPHITE),
                 ("BOX", (0, 0), (-1, -1), 0.65, LINE),
-                ("LINEABOVE", (0, 1), (-1, 1), 0.4, colors.Color(0.7, 0.12, 0.15, alpha=0.45)),
-                ("LEFTPADDING", (0, 0), (-1, -1), 10),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-                ("TOPPADDING", (0, 0), (-1, -1), 10),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+                ("LEFTPADDING", (0, 0), (-1, -1), 7),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+                ("TOPPADDING", (0, 0), (-1, -1), 7),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
                 ("ALIGN", (0, 0), (-1, 0), "CENTER"),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
             ]
@@ -116,18 +115,19 @@ def pizza_card(item):
     return table
 
 
-def pizza_grid(items):
+def pizza_grid(items, columns=3):
     rows = []
-    for index in range(0, len(items), 2):
-        rows.append([pizza_card(items[index]), pizza_card(items[index + 1]) if index + 1 < len(items) else ""])
-    table = Table(rows, colWidths=[8.1 * cm, 8.1 * cm], hAlign="CENTER")
+    for index in range(0, len(items), columns):
+        row_items = items[index:index + columns]
+        rows.append([pizza_card(item) for item in row_items] + [""] * (columns - len(row_items)))
+    table = Table(rows, colWidths=[5.45 * cm] * columns, hAlign="CENTER")
     table.setStyle(
         TableStyle(
             [
                 ("LEFTPADDING", (0, 0), (-1, -1), 4),
                 ("RIGHTPADDING", (0, 0), (-1, -1), 4),
                 ("TOPPADDING", (0, 0), (-1, -1), 4),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
             ]
         )
@@ -159,7 +159,7 @@ def build_pdf():
             "Referencia de produccion: 1 pizza napolitana de 30 a 32 cm cada 2 personas. Para experiencias mixtas sugerimos combinar clasicas italianas con recetas de autor.",
             STYLES["small"],
         ),
-        Spacer(1, 1.2 * cm),
+        Spacer(1, 3.0 * cm),
         Paragraph("Como elegir", STYLES["h2"]),
         Paragraph(
             "Puedes responder el correo de confirmacion indicando tus favoritas. Si no tienes preferencias, Festin Napoles prepara una seleccion balanceada segun el tipo de evento y cantidad de invitados.",
@@ -167,24 +167,14 @@ def build_pdf():
         ),
         PageBreak(),
         Paragraph("TRADIZIONALE", STYLES["eyebrow"]),
-        Paragraph("Clasicas italianas", STYLES["h2"]),
+        Paragraph("Tradizionale", STYLES["h2"]),
         Paragraph("Pensadas para compartir, con sabores reconocibles y equilibrio napolitano.", STYLES["lead"]),
-        pizza_grid(TRADIZIONALE[:4]),
-        PageBreak(),
-        Paragraph("TRADIZIONALE", STYLES["eyebrow"]),
-        Paragraph("Seleccion complementaria", STYLES["h2"]),
-        Paragraph("Dos opciones reconocibles para ampliar la eleccion de pizzas clasicas.", STYLES["lead"]),
-        pizza_grid(TRADIZIONALE[4:]),
+        pizza_grid(TRADIZIONALE),
         PageBreak(),
         Paragraph("SIGNATURE", STYLES["eyebrow"]),
-        Paragraph("Recetas de autor", STYLES["h2"]),
+        Paragraph("Signature", STYLES["h2"]),
         Paragraph("Combinaciones con mas caracter para elevar la experiencia del evento.", STYLES["lead"]),
-        pizza_grid(SIGNATURE[:4]),
-        PageBreak(),
-        Paragraph("SIGNATURE", STYLES["eyebrow"]),
-        Paragraph("Seleccion complementaria", STYLES["h2"]),
-        Paragraph("Sabores ideales para completar una seleccion mixta con presencia y variedad.", STYLES["lead"]),
-        pizza_grid(SIGNATURE[4:]),
+        pizza_grid(SIGNATURE),
         Spacer(1, 0.7 * cm),
         Rule(BLUE, 0.8),
         Spacer(1, 0.25 * cm),
