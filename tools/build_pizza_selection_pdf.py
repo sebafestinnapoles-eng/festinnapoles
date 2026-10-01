@@ -28,6 +28,8 @@ TRADIZIONALE = [
     ("Diavola", "Salame italiano, cebolla morada y aceitunas.", "bs2psYbFd7P6mrRZd-300-x.webp"),
     ("Pepperoni", "Pepperoni artesanal y queso fundido.", "GKmk8swxEdjQAN24G-300-x.webp"),
     ("Carnivora", "Jamon italiano, mozzarella y sabores intensos.", "wMq29m4H9XDJuxER4-300-x.webp"),
+    ("Napoletana", "Pomodoro, mozzarella, tomate fresco, oregano y aceite de oliva.", "pizza-napoletana.webp"),
+    ("Vegetariana / Ortolana", "Mozzarella, champinones, pimenton asado, cebolla morada y aceitunas.", "pizza-vegetariana-ortolana.webp"),
 ]
 
 SIGNATURE = [
@@ -167,7 +169,12 @@ def build_pdf():
         Paragraph("TRADIZIONALE", STYLES["eyebrow"]),
         Paragraph("Clasicas italianas", STYLES["h2"]),
         Paragraph("Pensadas para compartir, con sabores reconocibles y equilibrio napolitano.", STYLES["lead"]),
-        pizza_grid(TRADIZIONALE),
+        pizza_grid(TRADIZIONALE[:4]),
+        PageBreak(),
+        Paragraph("TRADIZIONALE", STYLES["eyebrow"]),
+        Paragraph("Seleccion complementaria", STYLES["h2"]),
+        Paragraph("Dos opciones reconocibles para ampliar la eleccion de pizzas clasicas.", STYLES["lead"]),
+        pizza_grid(TRADIZIONALE[4:]),
         PageBreak(),
         Paragraph("SIGNATURE", STYLES["eyebrow"]),
         Paragraph("Recetas de autor", STYLES["h2"]),
