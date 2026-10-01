@@ -87,9 +87,10 @@ function buildCustomerConfirmationEmail(payload) {
         <p style="margin:0 0 10px;color:#b32025;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;">Reserva confirmada</p>
         <h1 style="margin:0 0 16px;color:#f3ebdd;font-family:Georgia,serif;font-size:34px;line-height:1;">Festín Nápoles</h1>
         <p style="margin:0 0 18px;color:#d9cbbb;font-size:15px;line-height:1.6;">Hola ${escapeHtml(payload.nombre)}, muchas gracias por reservar Festín Nápoles para tu evento.</p>
-        <p style="margin:0 0 22px;color:#d9cbbb;font-size:15px;line-height:1.6;">Dejamos registrada tu reserva con los siguientes datos. Si necesitas ajustar dirección, horario o selección de pizzas, puedes responder este correo o escribirnos por WhatsApp.</p>
+        <p style="margin:0 0 22px;color:#d9cbbb;font-size:15px;line-height:1.6;">Dejamos registrada tu reserva con los siguientes datos. Si necesitas ajustar direccion, horario o seleccion de pizzas, puedes responder este correo o escribirnos por WhatsApp.</p>
+        <p style="margin:0 0 22px;"><a href="https://www.festinnapoles.cl/dossier/festin-napoles-seleccion-pizzas.pdf" style="display:inline-block;padding:12px 18px;border-radius:999px;background:#b32025;color:#f3ebdd;text-decoration:none;font-size:13px;font-weight:800;">Ver seleccion de pizzas</a></p>
         <table style="width:100%;border-collapse:collapse;">${tableRows}</table>
-        <p style="margin:22px 0 0;color:#a99784;font-size:13px;line-height:1.6;">Durante los próximos días puedes indicarnos si tienes preferencias de sabores Tradizionale o Signature. Si prefieres, también podemos definir una selección equilibrada para el evento.</p>
+        <p style="margin:22px 0 0;color:#a99784;font-size:13px;line-height:1.6;">Durante los proximos dias puedes indicarnos si tienes preferencias de sabores Tradizionale o Signature. Si prefieres, tambien podemos definir una seleccion equilibrada para el evento.</p>
       </div>
     </div>
   `;
