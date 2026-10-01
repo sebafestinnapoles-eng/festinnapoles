@@ -19,12 +19,14 @@ function buildReservationEmail(payload) {
   const rows = [
     ["Origen", payload.origen === "landing" ? "Landing web Festín Nápoles" : payload.origen || "No especificado"],
     ["Nombre", payload.nombre],
+    ["Correo", payload.email],
     ["Fecha", payload.fecha_evento],
     ["Tipo de evento", payload.tipo_evento],
     ["WhatsApp", payload.whatsapp],
     ["Comuna", payload.comuna],
     ["Horario estimado", payload.horario || "No indicado"],
-    ["Lugar del evento", payload.lugar || "No indicado"],
+    ["Tipo de lugar", payload.lugar || "No indicado"],
+    ["Dirección exacta", payload.direccion],
     ["Tipo de servicio", payload.tipo_servicio],
     ["Experiencia de pizzas", payload.experiencia_pizzas],
     ["Personas", payload.personas],
@@ -55,6 +57,44 @@ function buildReservationEmail(payload) {
   `;
 }
 
+function buildCustomerConfirmationEmail(payload) {
+  const rows = [
+    ["Fecha", payload.fecha_evento],
+    ["Horario", payload.horario || "Por coordinar"],
+    ["Tipo de evento", payload.tipo_evento],
+    ["Comuna", payload.comuna],
+    ["Dirección", payload.direccion],
+    ["Tipo de servicio", payload.tipo_servicio],
+    ["Experiencia de pizzas", payload.experiencia_pizzas],
+    ["Personas", payload.personas],
+    ["Pizzas sugeridas", payload.pizzas_sugeridas],
+    ["Composición", payload.composicion],
+    ["Precio estimado", payload.precio_estimado_texto]
+  ];
+
+  const tableRows = rows
+    .map(([label, value]) => `
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid #2a2a2a;color:#a99784;font-size:13px;">${escapeHtml(label)}</td>
+        <td style="padding:10px 12px;border-bottom:1px solid #2a2a2a;color:#f3ebdd;font-size:14px;font-weight:600;">${escapeHtml(value)}</td>
+      </tr>
+    `)
+    .join("");
+
+  return `
+    <div style="margin:0;padding:28px;background:#070707;color:#f3ebdd;font-family:Arial,sans-serif;">
+      <div style="max-width:640px;margin:0 auto;border:1px solid #2a2a2a;background:#101011;padding:28px;">
+        <p style="margin:0 0 10px;color:#b32025;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;">Reserva confirmada</p>
+        <h1 style="margin:0 0 16px;color:#f3ebdd;font-family:Georgia,serif;font-size:34px;line-height:1;">Festín Nápoles</h1>
+        <p style="margin:0 0 18px;color:#d9cbbb;font-size:15px;line-height:1.6;">Hola ${escapeHtml(payload.nombre)}, muchas gracias por reservar Festín Nápoles para tu evento.</p>
+        <p style="margin:0 0 22px;color:#d9cbbb;font-size:15px;line-height:1.6;">Dejamos registrada tu reserva con los siguientes datos. Si necesitas ajustar dirección, horario o selección de pizzas, puedes responder este correo o escribirnos por WhatsApp.</p>
+        <table style="width:100%;border-collapse:collapse;">${tableRows}</table>
+        <p style="margin:22px 0 0;color:#a99784;font-size:13px;line-height:1.6;">Durante los próximos días puedes indicarnos si tienes preferencias de sabores Tradizionale o Signature. Si prefieres, también podemos definir una selección equilibrada para el evento.</p>
+      </div>
+    </div>
+  `;
+}
+
 async function readJsonBody(request) {
   const chunks = [];
 
@@ -66,8 +106,12 @@ async function readJsonBody(request) {
 }
 
 function validatePayload(payload) {
-  const required = ["nombre", "fecha_evento", "tipo_evento", "whatsapp", "comuna", "tipo_servicio", "experiencia_pizzas", "personas"];
+  const required = ["nombre", "fecha_evento", "tipo_evento", "whatsapp", "email", "comuna", "direccion", "tipo_servicio", "experiencia_pizzas", "personas"];
   return required.filter((field) => !payload[field]);
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
 }
 
 module.exports = async function handler(request, response) {
@@ -104,7 +148,12 @@ module.exports = async function handler(request, response) {
       return;
     }
 
-    const emailResponse = await fetch(RESEND_API_URL, {
+    if (!isValidEmail(payload.email)) {
+      sendJson(response, 400, { ok: false, error: "Correo inválido.", missingFields: ["email"] });
+      return;
+    }
+
+    const internalEmailResponse = await fetch(RESEND_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -118,12 +167,32 @@ module.exports = async function handler(request, response) {
       })
     });
 
-    if (!emailResponse.ok) {
-      throw new Error(await emailResponse.text());
+    if (!internalEmailResponse.ok) {
+      throw new Error(await internalEmailResponse.text());
     }
 
-    const emailResult = await emailResponse.json();
-    sendJson(response, 200, { ok: true, emailId: emailResult.id });
+    const customerEmailResponse = await fetch(RESEND_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${resendApiKey}`
+      },
+      body: JSON.stringify({
+        from: resendFrom,
+        to: payload.email,
+        reply_to: resendTo,
+        subject: `Reserva confirmada Festín Nápoles - ${payload.fecha_evento}`,
+        html: buildCustomerConfirmationEmail(payload)
+      })
+    });
+
+    if (!customerEmailResponse.ok) {
+      throw new Error(await customerEmailResponse.text());
+    }
+
+    const internalEmailResult = await internalEmailResponse.json();
+    const customerEmailResult = await customerEmailResponse.json();
+    sendJson(response, 200, { ok: true, emailId: internalEmailResult.id, customerEmailId: customerEmailResult.id });
   } catch (error) {
     console.error("Error al enviar reserva por correo:", error);
     sendJson(response, 500, { ok: false, error: "No se pudo enviar la reserva." });

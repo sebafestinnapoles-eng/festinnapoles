@@ -1576,12 +1576,20 @@
                   <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required>
                 </label>
                 <label>
+                  Correo
+                  <input name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
+                </label>
+                <label>
                   Horario estimado
                   <input name="horario" placeholder="Ej: 20:00 hrs">
                 </label>
                 <label>
-                  Lugar del evento
+                  Tipo de lugar
                   <input name="lugar" placeholder="Casa, parcela, empresa o salón">
+                </label>
+                <label class="full">
+                  Dirección exacta del evento
+                  <input name="direccion" autocomplete="street-address" placeholder="Calle, número, edificio, salón o referencia de acceso" required>
                 </label>
                 <label class="full">
                   Comentarios especiales
@@ -1590,7 +1598,7 @@
                 <button class="button" id="reserveButton" type="submit">Reservar/Prenotare</button>
               </div>
             </div>
-            <p class="form-note" id="reservationStatus" aria-live="polite">Enviaremos tu solicitud para preparar la propuesta de tu evento.</p>
+            <p class="form-note" id="reservationStatus" aria-live="polite">Enviaremos tu reserva y una confirmación al correo indicado.</p>
           </form>
         </div>
       </section>
@@ -1796,6 +1804,7 @@
         fecha_evento: data.get("fecha"),
         tipo_evento: data.get("evento"),
         whatsapp: String(data.get("whatsapp") || "").trim(),
+        email: String(data.get("email") || "").trim(),
         comuna: String(data.get("comuna") || "").trim(),
         tipo_servicio: data.get("servicio"),
         experiencia_pizzas: data.get("linea"),
@@ -1807,6 +1816,7 @@
         detalle_estimacion: estimate.detail,
         horario: String(data.get("horario") || "").trim(),
         lugar: String(data.get("lugar") || "").trim(),
+        direccion: String(data.get("direccion") || "").trim(),
         comentarios: String(data.get("comentarios") || "").trim(),
         estado: "nueva",
         origen: "landing"
@@ -1834,7 +1844,7 @@
         updateEstimate();
         form.classList.add("is-sent");
         reservationStatus.classList.add("is-success");
-        reservationStatus.textContent = "Reserva enviada. Te contactaremos para confirmar disponibilidad y detalles. Gracias!";
+        reservationStatus.textContent = "Reserva enviada. Te enviamos una confirmación al correo indicado. Gracias!";
       } catch (error) {
         form.classList.remove("is-sent");
         reservationStatus.classList.remove("is-success");
