@@ -654,6 +654,68 @@
       line-height: 1.35;
     }
 
+    .floating-whatsapp {
+      position: fixed;
+      right: clamp(14px, 3vw, 28px);
+      bottom: clamp(14px, 3vw, 28px);
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px 11px 12px;
+      border: 1px solid rgba(217, 203, 187, 0.18);
+      border-radius: 999px;
+      color: var(--cream);
+      background:
+        linear-gradient(145deg, rgba(11, 42, 91, 0.72), rgba(179, 32, 37, 0.64)),
+        rgba(7, 7, 7, 0.92);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42), 0 8px 28px rgba(179, 32, 37, 0.18);
+      backdrop-filter: blur(14px);
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-2px);
+      border-color: rgba(217, 203, 187, 0.32);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.48), 0 10px 34px rgba(179, 32, 37, 0.24);
+    }
+
+    .floating-whatsapp:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 4px;
+    }
+
+    .floating-whatsapp-mark {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 999px;
+      color: var(--cream);
+      background: rgba(5, 5, 5, 0.34);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .floating-whatsapp-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1.1;
+    }
+
+    .floating-whatsapp-copy strong {
+      font-size: 0.88rem;
+      font-weight: 850;
+    }
+
+    .floating-whatsapp-copy span {
+      color: rgba(245, 238, 225, 0.72);
+      font-size: 0.68rem;
+      font-weight: 750;
+      letter-spacing: 0.05em;
+    }
+
     .festin-card.wide {
       width: min(100%, 1040px);
       border-color: rgba(11, 42, 91, 0.42);
@@ -1202,6 +1264,26 @@
         line-height: 1.35;
       }
 
+      .floating-whatsapp {
+        right: 12px;
+        bottom: 12px;
+        max-width: calc(100vw - 24px);
+        padding: 10px 12px 10px 10px;
+      }
+
+      .floating-whatsapp-mark {
+        width: 28px;
+        height: 28px;
+      }
+
+      .floating-whatsapp-copy strong {
+        font-size: 0.82rem;
+      }
+
+      .floating-whatsapp-copy span {
+        font-size: 0.62rem;
+      }
+
     }
   </style>
 </head>
@@ -1687,6 +1769,14 @@
       </div>
     </footer>
   </div>
+
+  <a class="floating-whatsapp" href="https://wa.me/56988455230?text=Hola%20Sebasti%C3%A1n%2C%20me%20interesa%20Fest%C3%ADn%20N%C3%A1poles%20para%20un%20evento.%20Vengo%20desde%20www.festinnapoles.cl" target="_blank" rel="noopener noreferrer" aria-label="Cotizar por WhatsApp con Sebastián al +56 9 8845 5230">
+    <span class="floating-whatsapp-mark" aria-hidden="true">WSP</span>
+    <span class="floating-whatsapp-copy">
+      <strong>Cotiza con Sebastián</strong>
+      <span>+56 9 8845 5230</span>
+    </span>
+  </a>
 
   <script>
     const revealTargets = document.querySelectorAll(
