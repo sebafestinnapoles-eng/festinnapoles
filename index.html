@@ -22,6 +22,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
     gtag("config", "AW-18496187427");
+    gtag("config", "AW-18485637441");
   </script>
 
   <script type="application/ld+json">
@@ -1824,7 +1825,8 @@
     const PRICE_SIGNATURE = 16990;
     const PRICE_FESTIN_PERSON = 9990;
     const RESERVATION_ENDPOINT = "/api/reservar";
-    const WHATSAPP_CONVERSION_ID = "AW-18496187427/UNa6CP2Gq5IdEKPY1fNE";
+    const RESERVATION_CONVERSION_ID = "AW-18496187427/UNa6CP2Gq5IdEKPY1fNE";
+    const WHATSAPP_CONVERSION_ID = "AW-18485637441/GZWoCPC0v5UdEMHi0e5E";
 
     const form = document.querySelector("#quoteForm");
     const servicioInput = document.querySelector("#servicioInput");
@@ -1918,7 +1920,7 @@
     });
     updateEstimate();
 
-    function reportWhatsAppConversion(callback) {
+    function reportAdsConversion(sendTo, options = {}, callback = () => {}) {
       let called = false;
       const done = () => {
         if (called) return;
@@ -1926,18 +1928,40 @@
         callback();
       };
 
-      if (typeof gtag !== "function") {
+      if (typeof gtag !== "function" || !sendTo) {
         done();
         return;
       }
 
       gtag("event", "conversion", {
-        send_to: WHATSAPP_CONVERSION_ID,
+        send_to: sendTo,
+        ...options,
         event_callback: done,
         event_timeout: 1000
       });
 
       window.setTimeout(done, 1100);
+    }
+
+    function reportReservationConversion(estimate) {
+      reportAdsConversion(RESERVATION_CONVERSION_ID, {
+        value: estimate.total || 0,
+        currency: "CLP"
+      });
+    }
+
+    function reportWhatsAppConversion(callback) {
+      if (typeof gtag === "function") {
+        gtag("event", "whatsapp_click", {
+          event_category: "lead",
+          event_label: "WhatsApp"
+        });
+      }
+
+      reportAdsConversion(WHATSAPP_CONVERSION_ID, {
+        value: 1.0,
+        currency: "CLP"
+      }, callback);
     }
 
     document.querySelectorAll('[data-conversion="whatsapp"]').forEach((link) => {
@@ -2019,6 +2043,7 @@
         form.classList.add("is-sent");
         reservationStatus.classList.add("is-success");
         reservationStatus.textContent = "Reserva enviada. Te enviamos una confirmación al correo indicado. Gracias!";
+        reportReservationConversion(estimate);
       } catch (error) {
         form.classList.remove("is-sent");
         reservationStatus.classList.remove("is-success");
